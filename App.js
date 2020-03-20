@@ -9,6 +9,7 @@ export default class main extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'ACR': require('./assets/fonts/AsapCondensed-Regular.ttf'),
+      'ACB': require('./assets/fonts/AsapCondensed-Bold.ttf'),
     });
     this.setState({fontLoaded: true});
   }
@@ -31,11 +32,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleText: {
-    position: 'absolute',
-    width: 112,
-    height: 30,
-    left: 150,
-    top: 50,
-    fontFamily: 'ACR',
+    // position: 'absolute',
+    // width: 112,
+    // height: 30,
+    // left: 146,
+    // top: 50,
+    left: 2,
+    bottom: 350,
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    lineHeight: 21,
+    textTransform: "uppercase",
+    color: '#A0060F'
   },
 });
