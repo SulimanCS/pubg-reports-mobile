@@ -16,4 +16,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  titleText: {
+    position: 'absolute',
+    width: 112,
+    height: 30,
+    left: 150,
+    top: 50,
+    fontFamily: 'ACR',
+  },
 });
