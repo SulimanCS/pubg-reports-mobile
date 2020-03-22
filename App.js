@@ -37,7 +37,7 @@ export default class main extends React.Component {
       this.state.fontLoaded ? (
         <View style={styles.container}>
           <Text style={styles.titleText}>PUBG Reports</Text>
-          <TrackIcon />
+          <TrackIcon style={styles.trackIcon}/>
         </View>
       ) : null
     );
@@ -66,4 +66,12 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: '#A0060F'
   },
+  trackIcon: {
+    color: '#000',
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    left: 47,
+    top: 137,
+  }
 });
