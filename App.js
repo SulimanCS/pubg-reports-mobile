@@ -54,7 +54,7 @@ export default class main extends React.Component {
           <Text style={styles.titleText}>PUBG Reports</Text>
           <TrackIcon style={styles.trackIcon}/>
           <VertSeparator style={styles.vertSeparator}/>
-          <HorizSeparator />
+          <HorizSeparator style={styles.horizSeparator}/>
         </View>
       ) : null
     );
@@ -97,5 +97,12 @@ const styles = StyleSheet.create({
     height: 128,
     left: 185,
     top: 122,
+  },
+  horizSeparator: {
+    position: 'absolute',
+    width: 5,
+    height: 215.85,
+    left: 83.5,
+    top: 285,
   }
 });
