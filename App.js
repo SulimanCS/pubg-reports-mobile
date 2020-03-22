@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, Platform, StyleSheet, Text, View, Button, Alert } from "react-native";
 import * as Font from 'expo-font';
 import Svg, { Path } from "react-native-svg"
 
@@ -56,6 +57,22 @@ function HorizSeparator(props) {
 }
 
 export default class main extends React.Component {
+    buttonClickded = () => {
+    Alert.alert(
+      "Alert Title",
+      "Alert Msg",
+      [
+        { text: "Later", onPress: () => console.log("later pressed") },
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancel Pressed"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ],
+      { cancelable: false }
+    );
+    }
   state = {
     fontLoaded: false,
   };
@@ -71,7 +88,13 @@ export default class main extends React.Component {
       this.state.fontLoaded ? (
         <View style={styles.container}>
           <Text style={styles.titleText}>PUBG Reports</Text>
+          <TouchableOpacity style={styles.test} onPress={this.buttonClickded}>
           <TrackIcon style={styles.trackIcon}/>
+          </TouchableOpacity>
+          <TouchableHighlight style={styles.square} onPress={this.buttonClickded}>
+
+          <View style={styles.square} />
+          </TouchableHighlight>
           <IDIcon style={styles.idIcon}/>
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>
@@ -107,11 +130,8 @@ const styles = StyleSheet.create({
   },
   trackIcon: {
     color: '#000',
-    position: 'absolute',
     width: 100,
     height: 100,
-    left: 47,
-    top: 137,
   },
   idIcon: {
     color: '#000',
@@ -160,5 +180,19 @@ const styles = StyleSheet.create({
     height: 215.85,
     left: 83.5,
     top: 285,
+  },
+  square: {
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    backgroundColor: '#000',
+  },
+  test: {
+    position: 'absolute',
+    width: 100,
+    height: 100,
+    left: 47,
+    top: 137,
+
   }
 });
