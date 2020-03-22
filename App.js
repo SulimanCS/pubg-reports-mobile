@@ -72,7 +72,7 @@ export default class main extends React.Component {
         <View style={styles.container}>
           <Text style={styles.titleText}>PUBG Reports</Text>
           <TrackIcon style={styles.trackIcon}/>
-          <IDIcon />
+          <IDIcon style={styles.idIcon}/>
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>
           <Text style={styles.trackText}>Track</Text>
@@ -111,6 +111,14 @@ const styles = StyleSheet.create({
     height: 100,
     left: 47,
     top: 137,
+  },
+  idIcon: {
+    color: '#000',
+    position: 'absolute',
+    width: 88,
+    height: 78,
+    left: 232,
+    top: 146,
   },
   trackText: {
     position: 'absolute',
