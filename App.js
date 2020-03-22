@@ -55,6 +55,7 @@ export default class main extends React.Component {
           <TrackIcon style={styles.trackIcon}/>
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>
+          <Text style={styles.trackText}>Track</Text>
         </View>
       ) : null
     );
@@ -90,6 +91,19 @@ const styles = StyleSheet.create({
     height: 100,
     left: 47,
     top: 137,
+  },
+  trackText: {
+    position: 'absolute',
+    width: 86,
+    height: 30,
+    left: 80,
+    top: 241,
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    lineHeight: 21,
+    textTransform: "uppercase",
+    color: '#A0060F'
   },
   vertSeparator: {
     position: 'absolute',
