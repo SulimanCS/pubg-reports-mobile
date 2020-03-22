@@ -28,6 +28,14 @@ function VertSeparator(props) {
   )
 }
 
+function HorizSeparator(props) {
+  return (
+    <Svg width={216} height={6} viewBox="0 0 216 6" fill="none" {...props}>
+      <Path fill="#000" d="M215.862 0l.001 5L.001 5.063 0 .063z" />
+    </Svg>
+  )
+}
+
 export default class main extends React.Component {
   state = {
     fontLoaded: false,
@@ -46,6 +54,7 @@ export default class main extends React.Component {
           <Text style={styles.titleText}>PUBG Reports</Text>
           <TrackIcon style={styles.trackIcon}/>
           <VertSeparator style={styles.vertSeparator}/>
+          <HorizSeparator />
         </View>
       ) : null
     );
