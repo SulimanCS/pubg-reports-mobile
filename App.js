@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
+import Svg, { Path } from "react-native-svg"
+
 
 export default class main extends React.Component {
   state = {
