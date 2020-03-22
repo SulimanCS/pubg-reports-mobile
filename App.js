@@ -20,6 +20,13 @@ function TrackIcon(props) {
     </Svg>
   )
 }
+function VertSeparator(props) {
+  return (
+    <Svg width={5} height={128} viewBox="0 0 5 128" fill="none" {...props}>
+      <Path fill="#000" d="M0 0h5v128H0z" />
+    </Svg>
+  )
+}
 
 export default class main extends React.Component {
   state = {
@@ -38,6 +45,7 @@ export default class main extends React.Component {
         <View style={styles.container}>
           <Text style={styles.titleText}>PUBG Reports</Text>
           <TrackIcon style={styles.trackIcon}/>
+          <VertSeparator />
         </View>
       ) : null
     );
