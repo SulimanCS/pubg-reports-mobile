@@ -76,6 +76,7 @@ export default class main extends React.Component {
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>
           <Text style={styles.trackText}>Track</Text>
+          <Text style={styles.idText}>PUBG ID</Text>
         </View>
       ) : null
     );
@@ -125,6 +126,19 @@ const styles = StyleSheet.create({
     width: 86,
     height: 30,
     left: 80,
+    top: 241,
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    lineHeight: 21,
+    textTransform: "uppercase",
+    color: '#A0060F'
+  },
+  idText: {
+    position: 'absolute',
+    width: 86,
+    height: 30,
+    left: 254,
     top: 241,
     fontFamily: 'ACB',
     fontStyle: 'normal',
