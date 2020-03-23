@@ -55,7 +55,7 @@ function HorizSeparator(props) {
   )
 }
 
-export default class main extends React.Component {
+export default class HomeScreen extends React.Component {
   state = {
     fontLoaded: false,
   };
