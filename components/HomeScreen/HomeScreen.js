@@ -67,11 +67,15 @@ export default class HomeScreen extends React.Component {
     this.setState({fontLoaded: true});
   }
   render() {
+    const { navigation } = this.props;
     return (
       this.state.fontLoaded ? (
         <View style={styles.container}>
           <Text style={styles.titleText}>PUBG Reports</Text>
-          <TrackIcon style={styles.trackIcon}/>
+          <TrackIcon
+            style={styles.trackIcon}
+            onPress={() => navigation.navigate("placeholder")}
+          />
           <IDIcon style={styles.idIcon}/>
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>
