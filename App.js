@@ -6,6 +6,10 @@ import HomeScreen from './components/HomeScreen/HomeScreen';
 
 const Stack = createStackNavigator();
 
+const removeHeader = () => ({
+  headerShown: false
+})
+
 export default class App extends React.Component {
 
   render() {
@@ -15,6 +19,7 @@ export default class App extends React.Component {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+          options={removeHeader}
         />
       </Stack.Navigator>
     </NavigationContainer>
