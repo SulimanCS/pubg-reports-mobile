@@ -76,7 +76,10 @@ export default class HomeScreen extends React.Component {
             style={styles.trackIcon}
             onPress={() => navigation.navigate("placeholder")}
           />
-          <IDIcon style={styles.idIcon}/>
+          <IDIcon
+            style={styles.idIcon}
+            onPress={() => navigation.navigate("Game ID")}
+          />
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>
           <Text style={styles.trackText}>Track</Text>
