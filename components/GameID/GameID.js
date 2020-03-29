@@ -16,6 +16,7 @@ export default class GameID extends React.Component {
   //  }
 
   render() {
+    const { callback } = this.props.route.params
     return (
 
       <View style={styles.container}>
@@ -27,7 +28,8 @@ export default class GameID extends React.Component {
         />
         <TouchableOpacity
           style = {styles.submitButton}
-          onPress = {null}
+          // onPress = {this.props.route.params.callback(this.state.gameID)}
+          onPress = {callback(this.state.gameID)}
         >
           <Text style = {styles.submitButtonText}> Submit </Text>
         </TouchableOpacity>

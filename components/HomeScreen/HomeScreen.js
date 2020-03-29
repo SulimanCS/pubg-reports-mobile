@@ -56,6 +56,7 @@ function HorizSeparator(props) {
 }
 
 export default class HomeScreen extends React.Component {
+
   state = {
     fontLoaded: false,
     gameID: null
@@ -77,6 +78,10 @@ export default class HomeScreen extends React.Component {
     )
   }
 
+  setGameID = (passedGameID) => {
+    this.setState({gameID: passedGameID})
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -89,7 +94,7 @@ export default class HomeScreen extends React.Component {
           />
           <IDIcon
             style={styles.idIcon}
-            onPress={() => navigation.navigate("Game ID")}
+            onPress={() => navigation.navigate("Game ID", {callback: this.setGameID})}
           />
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>
