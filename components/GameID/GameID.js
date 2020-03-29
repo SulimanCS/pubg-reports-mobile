@@ -2,8 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class GameID extends React.Component {
+
   state = {
+    gameID: ''
   };
+
+  handleGameID = (text) => {
+    this.setState({gameID: text})
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevState, this.state);
+  //  }
 
   render() {
     return (
