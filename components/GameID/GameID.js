@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 
 export default class GameID extends React.Component {
 
@@ -9,6 +10,10 @@ export default class GameID extends React.Component {
 
   handleGameID = (text) => {
     this.setState({gameID: text})
+  }
+
+  storeID = () => {
+    SecureStore.setItemAsync('gameID', this.state.gameID).then(res => console.log(res))
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -28,8 +33,8 @@ export default class GameID extends React.Component {
         />
         <TouchableOpacity
           style = {styles.submitButton}
-          // onPress = {this.props.route.params.callback(this.state.gameID)}
-          onPress = {callback(this.state.gameID)}
+          // onPress = {callback(this.state.gameID)}
+          onPress = {() => this.storeID()}
         >
           <Text style = {styles.submitButtonText}> Submit </Text>
         </TouchableOpacity>
