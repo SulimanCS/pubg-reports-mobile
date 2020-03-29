@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 
 export default class GameID extends React.Component {
 
@@ -19,7 +19,19 @@ export default class GameID extends React.Component {
     return (
 
       <View style={styles.container}>
-        <Text>Game ID</Text>
+        {/* <Text>Game ID</Text> */}
+        <TextInput style = {styles.input}
+          placeholder = 'Enter your PUBG ID'
+          onChangeText= {(text) => this.handleGameID(text)}
+          // defaultValue={text}
+        />
+        <TouchableOpacity
+          style = {styles.submitButton}
+          onPress = {null}
+        >
+          <Text style = {styles.submitButtonText}> Submit </Text>
+        </TouchableOpacity>
+
       </View>
     );
   }
@@ -31,5 +43,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  input: {
+    margin: 15,
+  },
+  submitButton: {
+    backgroundColor: '#000',
+    padding: 10,
+    margin: 15,
+    height: 40,
+  },
+  submitButtonText:{
+    color: 'white'
   }
 });
