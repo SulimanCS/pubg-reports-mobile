@@ -58,7 +58,9 @@ function HorizSeparator(props) {
 export default class HomeScreen extends React.Component {
   state = {
     fontLoaded: false,
+    gameID: null
   };
+
   async componentDidMount() {
     await Font.loadAsync({
       'ACR': require('../../assets/fonts/AsapCondensed-Regular.ttf'),
@@ -66,6 +68,15 @@ export default class HomeScreen extends React.Component {
     });
     this.setState({fontLoaded: true});
   }
+
+  linkIDMessage = () => {
+    return (
+      this.state.gameID ? (
+        <Text>Logged in as: {this.state.gameID}</Text>
+      ) : <Text>Please link your PUBG ID in the PUBG ID page</Text>
+    )
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -84,6 +95,7 @@ export default class HomeScreen extends React.Component {
           <HorizSeparator style={styles.horizSeparator}/>
           <Text style={styles.trackText}>Track</Text>
           <Text style={styles.idText}>PUBG ID</Text>
+          <this.linkIDMessage />
         </View>
       ) : null
     );
