@@ -1,6 +1,10 @@
 import React from 'react';
-import { StyleSheet, Alert, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { YellowBox, StyleSheet, Alert, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+
+YellowBox.ignoreWarnings([
+  'Non-serializable values were found in the navigation state',
+]);
 
 export default class GameID extends React.Component {
 
