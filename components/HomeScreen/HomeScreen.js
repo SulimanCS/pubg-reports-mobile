@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
-import Svg, { Path } from "react-native-svg"
+import Svg, { Path } from "react-native-svg";
+import * as SecureStore from 'expo-secure-store';
 
 function TrackIcon(props) {
   return (
@@ -71,6 +72,10 @@ export default class HomeScreen extends React.Component {
   }
 
   linkIDMessage = () => {
+    SecureStore.getItemAsync('gameID').then(res => {
+      console.log('Logged in as: ' + res)
+      this.setState({gameID: res})
+    })
     return (
       this.state.gameID ? (
         <Text>Logged in as: {this.state.gameID}</Text>
@@ -94,7 +99,7 @@ export default class HomeScreen extends React.Component {
           />
           <IDIcon
             style={styles.idIcon}
-            onPress={() => navigation.navigate("Game ID", {callback: this.setGameID})}
+            onPress={() => navigation.navigate("Game ID")}
           />
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>

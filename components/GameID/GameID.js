@@ -21,7 +21,7 @@ export default class GameID extends React.Component {
   //  }
 
   render() {
-    const { callback } = this.props.route.params
+    // const { callback } = this.props.route.params
     return (
 
       <View style={styles.container}>
