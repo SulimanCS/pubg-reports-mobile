@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Alert, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 
 export default class GameID extends React.Component {
@@ -13,7 +13,16 @@ export default class GameID extends React.Component {
   }
 
   storeID = () => {
-    SecureStore.setItemAsync('gameID', this.state.gameID).then(res => console.log(res))
+    this.checkIDValidity()
+    ? SecureStore.setItemAsync('gameID', this.state.gameID).then(res => console.log(res))
+    : alert('invalid')
+  }
+
+  checkIDValidity = () => {
+    if (this.state.gameID.toLowerCase() !== 'stx0') {
+      return false
+    }
+    return true
   }
 
   // componentDidUpdate(prevProps, prevState) {
