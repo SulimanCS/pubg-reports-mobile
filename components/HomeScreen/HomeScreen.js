@@ -68,14 +68,14 @@ export default class HomeScreen extends React.Component {
       'ACR': require('../../assets/fonts/AsapCondensed-Regular.ttf'),
       'ACB': require('../../assets/fonts/AsapCondensed-Bold.ttf'),
     });
-    this.setState({fontLoaded: true});
+    ID = await SecureStore.getItemAsync('gameID')
+    this.setState({
+      fontLoaded: true,
+      gameID: ID
+    });
   }
 
   linkIDMessage = () => {
-    SecureStore.getItemAsync('gameID').then(res => {
-      console.log('Logged in as: ' + res)
-      this.setState({gameID: res})
-    })
     return (
       this.state.gameID ? (
         <Text>Logged in as: {this.state.gameID}</Text>
