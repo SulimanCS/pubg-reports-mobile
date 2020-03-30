@@ -83,7 +83,7 @@ export default class HomeScreen extends React.Component {
     )
   }
 
-  setGameID = (passedGameID) => {
+  setGameIDCallback = (passedGameID) => {
     this.setState({gameID: passedGameID})
   }
 
@@ -99,7 +99,7 @@ export default class HomeScreen extends React.Component {
           />
           <IDIcon
             style={styles.idIcon}
-            onPress={() => navigation.navigate("Game ID")}
+            onPress={() => navigation.navigate("Game ID", {callback: this.setGameIDCallback})}
           />
           <VertSeparator style={styles.vertSeparator}/>
           <HorizSeparator style={styles.horizSeparator}/>

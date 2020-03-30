@@ -13,8 +13,13 @@ export default class GameID extends React.Component {
   }
 
   storeID = () => {
+    const { callback } = this.props.route.params
+
     this.checkIDValidity()
-    ? SecureStore.setItemAsync('gameID', this.state.gameID).then(res => console.log(res))
+    ? (
+      SecureStore.setItemAsync('gameID', this.state.gameID).then(res => console.log(res)),
+      callback(this.state.gameID)
+    )
     : alert('invalid')
   }
 
