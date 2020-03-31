@@ -11,8 +11,17 @@ export default class GameID extends React.Component {
 
   state = {
     typedGameID: '',
-    gameID: null
+    gameID: null,
+    gameIDLoaded: false
   };
+
+  async componentDidMount() {
+    ID = await SecureStore.getItemAsync('gameID')
+    this.setState({
+      gameID: ID,
+      gameIDLoaded: true
+    });
+  }
 
   handleGameID = (text) => {
     this.setState({typedGameID: text})
@@ -55,22 +64,23 @@ export default class GameID extends React.Component {
   render() {
     // const { callback } = this.props.route.params
     return (
-      //TODO async componentDidMount
-      <View style={styles.container}>
-        {/* <Text>Game ID</Text> */}
-        <TextInput style = {styles.input}
-          placeholder = 'Enter your PUBG ID (case sensitive)'
-          onChangeText= {(text) => this.handleGameID(text)}
-          // defaultValue={text}
-        />
-        <TouchableOpacity
-          style = {styles.submitButton}
-          // onPress = {callback(this.state.typedGameID)}
-          onPress = {() => this.checkIDValidity()}
-        >
-          <Text style = {styles.submitButtonText}> Submit </Text>
-        </TouchableOpacity>
-      </View>
+      this.state.gameIDLoaded ? (
+        <View style={styles.container}>
+          {/* <Text>Game ID</Text> */}
+          <TextInput style = {styles.input}
+            placeholder = 'Enter your PUBG ID (case sensitive)'
+            onChangeText= {(text) => this.handleGameID(text)}
+            // defaultValue={text}
+          />
+          <TouchableOpacity
+            style = {styles.submitButton}
+            // onPress = {callback(this.state.typedGameID)}
+            onPress = {() => this.checkIDValidity()}
+          >
+            <Text style = {styles.submitButtonText}> Submit </Text>
+          </TouchableOpacity>
+        </View>
+      ) : null
     );
   }
 }
