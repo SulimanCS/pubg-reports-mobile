@@ -1,6 +1,7 @@
 import React from 'react';
 import { YellowBox, StyleSheet, Alert, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import TOKEN from '../../TOKEN'
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
