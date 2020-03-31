@@ -10,29 +10,42 @@ YellowBox.ignoreWarnings([
 export default class GameID extends React.Component {
 
   state = {
-    gameID: ''
+    typedGameID: '',
+    gameID: null
   };
 
   handleGameID = (text) => {
-    this.setState({gameID: text})
+    this.setState({typedGameID: text})
   }
 
-  storeID = () => {
+  storeID = (validID) => {
     const { callback } = this.props.route.params
 
-    this.checkIDValidity()
+    validID
     ? (
-      SecureStore.setItemAsync('gameID', this.state.gameID).then(res => console.log(res)),
+      SecureStore.setItemAsync('gameID', this.state.gameID),
       callback(this.state.gameID)
     )
-    : alert('invalid')
+    : alert('Invalid PUBG ID')
   }
 
   checkIDValidity = () => {
-    if (this.state.gameID.toLowerCase() !== 'stx0') {
-      return false
+    let options = {
+      headers: {
+        "Authorization": "Bearer " + TOKEN,
+        "Accept": "application/vnd.api+json"
+      }
     }
-    return true
+    let url = 'https://api.pubg.com/shards/steam/players?filter[playerNames]=' + this.state.typedGameID
+    fetch(url, options)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data['data'][0]['attributes']['name'])
+        console.log(this.state.gameID)
+        this.setState({gameID: data['data'][0]['attributes']['name']})
+        this.storeID(true)
+      })
+      .catch(err => this.storeID(false))
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -42,22 +55,21 @@ export default class GameID extends React.Component {
   render() {
     // const { callback } = this.props.route.params
     return (
-
+      //TODO async componentDidMount
       <View style={styles.container}>
         {/* <Text>Game ID</Text> */}
         <TextInput style = {styles.input}
-          placeholder = 'Enter your PUBG ID'
+          placeholder = 'Enter your PUBG ID (case sensitive)'
           onChangeText= {(text) => this.handleGameID(text)}
           // defaultValue={text}
         />
         <TouchableOpacity
           style = {styles.submitButton}
-          // onPress = {callback(this.state.gameID)}
-          onPress = {() => this.storeID()}
+          // onPress = {callback(this.state.typedGameID)}
+          onPress = {() => this.checkIDValidity()}
         >
           <Text style = {styles.submitButtonText}> Submit </Text>
         </TouchableOpacity>
-
       </View>
     );
   }
