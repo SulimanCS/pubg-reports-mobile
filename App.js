@@ -3,6 +3,7 @@ import React from 'react';
 import { TouchableOpacity, TouchableWithoutFeedback, TouchableHighlight, Platform, StyleSheet, Text, View, Button, Alert } from "react-native";
 import * as Font from 'expo-font';
 import Svg, { Path } from "react-native-svg"
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 
 function TrackIcon(props) {
   return (
@@ -87,19 +88,27 @@ export default class main extends React.Component {
     return (
       this.state.fontLoaded ? (
         <View style={styles.container}>
-          <Text style={styles.titleText}>PUBG Reports</Text>
-          <TouchableOpacity style={styles.test} onPress={this.buttonClickded}>
-          <TrackIcon style={styles.trackIcon}/>
-          </TouchableOpacity>
-          <TouchableHighlight style={styles.square} onPress={this.buttonClickded}>
-
-          <View style={styles.square} />
-          </TouchableHighlight>
-          <IDIcon style={styles.idIcon}/>
-          <VertSeparator style={styles.vertSeparator}/>
-          <HorizSeparator style={styles.horizSeparator}/>
-          <Text style={styles.trackText}>Track</Text>
-          <Text style={styles.idText}>PUBG ID</Text>
+          <Text style={styles.titleText}>Center</Text>
+          <View style={styles.row}>
+            <View style={styles.e}>
+              <TrackIcon style={styles.trackIcon}/>
+              <View style={{alignItems: 'center'}}>
+                <Text style={styles.trackText}>Track</Text>
+              </View>
+            </View>
+            <View style={styles.e}>
+              <VertSeparator style={styles.vertSeparator}/>
+            </View>
+            <View style={styles.e}>
+              <IDIcon style={styles.idIcon}/>
+              <View style={{alignItems: 'center'}}>
+                <Text style={styles.idText}>PUBG ID</Text>
+              </View>
+            </View>
+          </View>
+          <View style={{flex: 1, backgroundColor: '#fff'}}>
+            <HorizSeparator style={styles.horizSeparator}/>
+          </View>
         </View>
       ) : null
     );
@@ -111,16 +120,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  row: {
+    flex: 0.3,
+    // backgroundColor: '#000',
+    // alignItems: 'center',
+    flexDirection: 'row',
+    marginTop: 76,
+    right: 4.8
+  },
+  e: {
+    marginLeft: 20,
+    marginRight: 20
   },
   titleText: {
+    marginTop: hp('5%'),
     // position: 'absolute',
     // width: 112,
     // height: 30,
     // left: 146,
     // top: 50,
-    left: 2,
-    bottom: 350,
     fontFamily: 'ACB',
     fontStyle: 'normal',
     fontWeight: 'bold',
@@ -135,31 +154,12 @@ const styles = StyleSheet.create({
   },
   idIcon: {
     color: '#000',
-    position: 'absolute',
     width: 88,
     height: 78,
-    left: 232,
-    top: 146,
-  },
-  trackText: {
-    position: 'absolute',
-    width: 86,
-    height: 30,
-    left: 80,
-    top: 241,
-    fontFamily: 'ACB',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    lineHeight: 21,
-    textTransform: "uppercase",
-    color: '#A0060F'
+    marginTop: 10
   },
   idText: {
-    position: 'absolute',
-    width: 86,
-    height: 30,
-    left: 254,
-    top: 241,
+    top: 20.5,
     fontFamily: 'ACB',
     fontStyle: 'normal',
     fontWeight: 'bold',
@@ -167,19 +167,21 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: '#A0060F'
   },
+  trackText: {
+    top: 10,
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    lineHeight: 21,
+    textTransform: "uppercase",
+    color: '#A0060F',
+  },
   vertSeparator: {
-    position: 'absolute',
     width: 5,
     height: 128,
-    left: 185,
-    top: 122,
+    bottom: 10
   },
   horizSeparator: {
-    position: 'absolute',
-    width: 5,
-    height: 215.85,
-    left: 83.5,
-    top: 285,
   },
   square: {
     position: 'absolute',
