@@ -5,6 +5,7 @@ import TOKEN from '../../TOKEN'
 import Svg, { Path } from "react-native-svg";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 import UserInfo from './UserInfo';
+import { Button } from 'react-native-paper';
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -179,13 +180,13 @@ export default class GameID extends React.Component {
                 onChangeText= {(text) => this.handleGameID(text)}
                 // defaultValue={text}
               />
-              <TouchableOpacity
-                style = {styles.submitButton}
-                // onPress = {callback(this.state.typedGameID)}
-                onPress = {() => this.checkIDValidity()}
+              <Button
+                mode="contained"
+                color="#000"
+                onPress={this.checkIDValidity}
               >
-                <Text style = {styles.submitButtonText}> Submit </Text>
-              </TouchableOpacity>
+                <Text style={styles.submitButtonText}> Link </Text>
+              </Button>
             </View>
           </View>
         )
@@ -239,13 +240,9 @@ const styles = StyleSheet.create({
   selectedPlaystation: {
     color: '#003087'
   },
-  submitButton: {
-    backgroundColor: '#000',
-    padding: 10,
-    margin: 15,
-    height: 40,
-  },
-  submitButtonText:{
-    color: 'white'
+  submitButtonText: {
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    lineHeight: 21,
   }
 });
