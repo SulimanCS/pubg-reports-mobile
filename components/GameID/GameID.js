@@ -102,7 +102,8 @@ export default class GameID extends React.Component {
         "Accept": "application/vnd.api+json"
       }
     }
-    let url = 'https://api.pubg.com/shards/steam/players?filter[playerNames]=' + this.state.typedGameID
+    let url = 'https://api.pubg.com/shards/' +
+    this.state.platform + '/players?filter[playerNames]=' + this.state.typedGameID
     fetch(url, options)
       .then(res => res.json())
       .then(data => {
