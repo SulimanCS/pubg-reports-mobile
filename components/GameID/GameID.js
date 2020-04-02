@@ -125,9 +125,15 @@ export default class GameID extends React.Component {
           <Text style={styles.titleText}>PUBG ID</Text>
           <View style={styles.inputContainer}>
             <View style={{flexDirection: 'row'}}>
-              <SteamIcon style={styles.icon} />
-              <XboxIcon style={[styles.icon, styles.xboxIcon]} />
-              <PlaystationIcon style={styles.icon} />
+              <TouchableOpacity>
+                <SteamIcon style={styles.icon} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <XboxIcon style={[styles.icon, styles.xboxIcon]} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <PlaystationIcon style={styles.icon} />
+              </TouchableOpacity>
             </View>
             <TextInput style = {styles.input}
               placeholder = 'Enter your PUBG ID (case sensitive)'
