@@ -157,13 +157,13 @@ export default class GameID extends React.Component {
                 onPress={this.selectXbox}
               >
                 <XboxIcon style={[styles.icon, styles.xboxIcon,
-                this.xboxSelected() ? styles.selected : null]} />
+                this.xboxSelected() ? styles.selectedXbox : null]} />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={this.selectPlaystation}
               >
                 <PlaystationIcon style={[styles.icon,
-                this.playstationSelected() ? styles.selected : null]} />
+                this.playstationSelected() ? styles.selectedPlaystation : null]} />
               </TouchableOpacity>
             </View>
             <TextInput style = {styles.input}
@@ -223,6 +223,12 @@ const styles = StyleSheet.create({
   },
   selected: {
     color: '#000'
+  },
+  selectedXbox: {
+    color: '#0e7a0d'
+  },
+  selectedPlaystation: {
+    color: '#003087'
   },
   submitButton: {
     backgroundColor: '#000',
