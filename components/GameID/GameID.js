@@ -2,6 +2,7 @@ import React from 'react';
 import { YellowBox, StyleSheet, Alert, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import TOKEN from '../../TOKEN'
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -66,19 +67,21 @@ export default class GameID extends React.Component {
     return (
       this.state.gameIDLoaded ? (
         <View style={styles.container}>
-          {/* <Text>Game ID</Text> */}
-          <TextInput style = {styles.input}
-            placeholder = 'Enter your PUBG ID (case sensitive)'
-            onChangeText= {(text) => this.handleGameID(text)}
-            // defaultValue={text}
-          />
-          <TouchableOpacity
-            style = {styles.submitButton}
-            // onPress = {callback(this.state.typedGameID)}
-            onPress = {() => this.checkIDValidity()}
-          >
-            <Text style = {styles.submitButtonText}> Submit </Text>
-          </TouchableOpacity>
+          <Text style={styles.titleText}>PUBG ID</Text>
+          <View style={styles.inputContainer}>
+            <TextInput style = {styles.input}
+              placeholder = 'Enter your PUBG ID (case sensitive)'
+              onChangeText= {(text) => this.handleGameID(text)}
+              // defaultValue={text}
+            />
+            <TouchableOpacity
+              style = {styles.submitButton}
+              // onPress = {callback(this.state.typedGameID)}
+              onPress = {() => this.checkIDValidity()}
+            >
+              <Text style = {styles.submitButtonText}> Submit </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       ) : null
     );
@@ -90,7 +93,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+  },
+  titleText: {
+    marginTop: hp('5%'),
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    lineHeight: 21,
+    textTransform: "uppercase",
+    color: '#A0060F'
+  },
+  inputContainer: {
+    height: '80%',
     justifyContent: 'center',
+    alignItems: 'center',
   },
   input: {
     margin: 15,
