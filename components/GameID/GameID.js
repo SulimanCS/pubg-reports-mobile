@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import TOKEN from '../../TOKEN'
 import Svg, { Path } from "react-native-svg";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
+import UserInfo from './UserInfo';
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -143,43 +144,47 @@ export default class GameID extends React.Component {
     // const { callback } = this.props.route.params
     return (
       this.state.gameIDLoaded ? (
-        <View style={styles.container}>
-          <Text style={styles.titleText}>PUBG ID</Text>
-          <View style={styles.inputContainer}>
-            <View style={{flexDirection: 'row'}}>
+        this.state.gameID ? (
+          <UserInfo />
+        ) : (
+          <View style={styles.container}>
+            <Text style={styles.titleText}>PUBG ID</Text>
+            <View style={styles.inputContainer}>
+              <View style={{flexDirection: 'row'}}>
+                <TouchableOpacity
+                  onPress={this.selectSteam}
+                >
+                  <SteamIcon style={[styles.icon,
+                  this.steamSelected() ? styles.selected : null]} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.selectXbox}
+                >
+                  <XboxIcon style={[styles.icon, styles.xboxIcon,
+                  this.xboxSelected() ? styles.selectedXbox : null]} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.selectPlaystation}
+                >
+                  <PlaystationIcon style={[styles.icon,
+                  this.playstationSelected() ? styles.selectedPlaystation : null]} />
+                </TouchableOpacity>
+              </View>
+              <TextInput style = {styles.input}
+                placeholder = 'Enter your PUBG ID (case sensitive)'
+                onChangeText= {(text) => this.handleGameID(text)}
+                // defaultValue={text}
+              />
               <TouchableOpacity
-                onPress={this.selectSteam}
+                style = {styles.submitButton}
+                // onPress = {callback(this.state.typedGameID)}
+                onPress = {() => this.checkIDValidity()}
               >
-                <SteamIcon style={[styles.icon,
-                this.steamSelected() ? styles.selected : null]} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={this.selectXbox}
-              >
-                <XboxIcon style={[styles.icon, styles.xboxIcon,
-                this.xboxSelected() ? styles.selectedXbox : null]} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={this.selectPlaystation}
-              >
-                <PlaystationIcon style={[styles.icon,
-                this.playstationSelected() ? styles.selectedPlaystation : null]} />
+                <Text style = {styles.submitButtonText}> Submit </Text>
               </TouchableOpacity>
             </View>
-            <TextInput style = {styles.input}
-              placeholder = 'Enter your PUBG ID (case sensitive)'
-              onChangeText= {(text) => this.handleGameID(text)}
-              // defaultValue={text}
-            />
-            <TouchableOpacity
-              style = {styles.submitButton}
-              // onPress = {callback(this.state.typedGameID)}
-              onPress = {() => this.checkIDValidity()}
-            >
-              <Text style = {styles.submitButtonText}> Submit </Text>
-            </TouchableOpacity>
           </View>
-        </View>
+        )
       ) : null
     );
   }
