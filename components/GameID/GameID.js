@@ -68,7 +68,8 @@ export default class GameID extends React.Component {
   state = {
     typedGameID: '',
     gameID: null,
-    gameIDLoaded: false
+    gameIDLoaded: false,
+    platform: 'steam'
   };
 
   async componentDidMount() {
@@ -113,6 +114,26 @@ export default class GameID extends React.Component {
       .catch(err => this.storeID(false))
   }
 
+  currentPlatform = (suppliedPlatform) => {
+    let returnValue = null
+    this.state.platform === suppliedPlatform
+    ? returnValue = true
+    : returnValue = false
+    return returnValue
+  }
+
+  steamSelected = () => this.currentPlatform('steam')
+
+  xboxSelected = () => this.currentPlatform('xbox')
+
+  playstationSelected = () => this.currentPlatform('playstation')
+
+  selectSteam = () => this.setState({platform: 'steam'})
+
+  selectXbox = () => this.setState({platform: 'xbox'})
+
+  selectPlaystation = () => this.setState({platform: 'playstation'})
+
   // componentDidUpdate(prevProps, prevState) {
   //   console.log(prevState, this.state);
   //  }
@@ -125,14 +146,23 @@ export default class GameID extends React.Component {
           <Text style={styles.titleText}>PUBG ID</Text>
           <View style={styles.inputContainer}>
             <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity>
-                <SteamIcon style={styles.icon} />
+              <TouchableOpacity
+                onPress={this.selectSteam}
+              >
+                <SteamIcon style={[styles.icon,
+                this.steamSelected() ? styles.selected : null]} />
               </TouchableOpacity>
-              <TouchableOpacity>
-                <XboxIcon style={[styles.icon, styles.xboxIcon]} />
+              <TouchableOpacity
+                onPress={this.selectXbox}
+              >
+                <XboxIcon style={[styles.icon, styles.xboxIcon,
+                this.xboxSelected() ? styles.selected : null]} />
               </TouchableOpacity>
-              <TouchableOpacity>
-                <PlaystationIcon style={styles.icon} />
+              <TouchableOpacity
+                onPress={this.selectPlaystation}
+              >
+                <PlaystationIcon style={[styles.icon,
+                this.playstationSelected() ? styles.selected : null]} />
               </TouchableOpacity>
             </View>
             <TextInput style = {styles.input}
