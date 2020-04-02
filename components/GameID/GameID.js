@@ -124,6 +124,11 @@ export default class GameID extends React.Component {
         <View style={styles.container}>
           <Text style={styles.titleText}>PUBG ID</Text>
           <View style={styles.inputContainer}>
+            <View style={{flexDirection: 'row'}}>
+              <SteamIcon style={styles.icon} />
+              <XboxIcon style={[styles.icon, styles.xboxIcon]} />
+              <PlaystationIcon style={styles.icon} />
+            </View>
             <TextInput style = {styles.input}
               placeholder = 'Enter your PUBG ID (case sensitive)'
               onChangeText= {(text) => this.handleGameID(text)}
@@ -165,6 +170,22 @@ const styles = StyleSheet.create({
   },
   input: {
     margin: 15,
+  },
+  icon: {
+    color: 'grey',
+    width: 65,
+    height: 65,
+    marginRight: 13.5,
+    marginLeft: 13.5,
+    marginBottom: 10
+  },
+  xboxIcon: {
+    top: 3,
+    width: 55,
+    height: 55,
+  },
+  selected: {
+    color: '#000'
   },
   submitButton: {
     backgroundColor: '#000',
