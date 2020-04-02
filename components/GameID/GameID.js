@@ -141,11 +141,15 @@ export default class GameID extends React.Component {
   //  }
 
   render() {
-    // const { callback } = this.props.route.params
+    const { callback } = this.props.route.params
     return (
       this.state.gameIDLoaded ? (
         this.state.gameID ? (
-          <UserInfo ID={this.state.gameID} />
+          <UserInfo
+            ID={this.state.gameID}
+            navigation={this.props.navigation}
+            callback={callback}
+          />
         ) : (
           <View style={styles.container}>
             <Text style={styles.titleText}>PUBG ID</Text>

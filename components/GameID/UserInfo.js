@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import TOKEN from '../../TOKEN'
 import Svg, { Path } from "react-native-svg";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
+import { Button } from 'react-native-paper';
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -11,10 +12,30 @@ YellowBox.ignoreWarnings([
 
 export default class UserInfo extends React.Component {
 
+  deleteID = () => {
+    SecureStore.deleteItemAsync('gameID')
+    this.props.callback(null)
+  }
+
+  unlinkID = () => {
+    const { navigation } = this.props;
+    this.deleteID()
+    navigation.navigate("Home")
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>{this.props.ID}</Text>
+          <View style={styles.buttonContainer}>
+            <Button
+              mode="contained"
+              color="#000"
+              onPress={this.unlinkID}
+            >
+              <Text style={styles.buttonText}>Unlink</Text>
+            </Button>
+          </View>
       </View>
     );
   }
@@ -34,4 +55,14 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     color: '#A0060F'
   },
+  buttonContainer: {
+    height: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    lineHeight: 21,
+  }
 });
