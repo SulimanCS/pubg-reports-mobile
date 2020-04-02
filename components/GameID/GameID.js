@@ -145,7 +145,7 @@ export default class GameID extends React.Component {
     return (
       this.state.gameIDLoaded ? (
         this.state.gameID ? (
-          <UserInfo />
+          <UserInfo ID={this.state.gameID} />
         ) : (
           <View style={styles.container}>
             <Text style={styles.titleText}>PUBG ID</Text>

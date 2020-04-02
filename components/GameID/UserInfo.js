@@ -14,7 +14,7 @@ export default class UserInfo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello World</Text>
+        <Text style={styles.titleText}>{this.props.ID}</Text>
       </View>
     );
   }
@@ -25,6 +25,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+  },
+  titleText: {
+    marginTop: hp('5%'),
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    lineHeight: 21,
+    color: '#A0060F'
   },
 });
