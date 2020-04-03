@@ -62,11 +62,15 @@ export default class LifetimeStats extends React.Component {
 
   state = {
     firstChoiceScreen: true,
+    firstChoice: null,
     secondChoiceScreen: false
   }
 
-  handleClick = () => {
-    this.setState({firstChoiceScreen: false})
+  handleClickFirstScreen = (choice) => {
+    this.setState({
+      firstChoiceScreen: false,
+      firstChoice: choice
+    })
     setTimeout(() => {
       console.log('timeout')
       this.setState({secondChoiceScreen: true})
@@ -81,14 +85,14 @@ export default class LifetimeStats extends React.Component {
           <Text style={styles.titleText}>{ID}</Text>
           <FadeInView duration={1450} value={1}>
             <View style={styles.optionsContainer}>
-              <TouchableOpacity onPress={this.handleClick}>
+              <TouchableOpacity onPress={() => this.handleClickFirstScreen('FPP')}>
                 <View style={styles.surfaceContainer}>
                   <Surface style={styles.surface}>
                         <Text style={styles.surfaceText}>FPP</Text>
                   </Surface>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => console.log('TPP hit')}>
+              <TouchableOpacity onPress={() => this.handleClickFirstScreen('TPP')}>
                 <View style={styles.surfaceContainer}>
                   <Surface style={styles.surface}>
                         <Text style={styles.surfaceText}>TPP</Text>
