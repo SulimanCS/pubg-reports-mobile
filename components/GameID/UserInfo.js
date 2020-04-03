@@ -27,14 +27,25 @@ export default class UserInfo extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>{this.props.ID}</Text>
-          <View style={styles.buttonContainer}>
-            <Button
-              mode="contained"
-              color="#000"
-              onPress={this.unlinkID}
-            >
-              <Text style={styles.buttonText}>Unlink</Text>
-            </Button>
+          <View style={styles.buttonsContainer}>
+            <View style={styles.buttonContainer}>
+              <Button
+                mode="contained"
+                color="#000"
+                onPress={this.unlinkID}
+              >
+                <Text style={styles.buttonText}>Unlink</Text>
+              </Button>
+            </View>
+            <View style={styles.buttonContainer}>
+              <Button
+                mode="contained"
+                color="#000"
+                onPress={null}
+              >
+                <Text style={styles.buttonText}>Lifetime Stats</Text>
+              </Button>
+            </View>
           </View>
       </View>
     );
@@ -55,10 +66,16 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     color: '#A0060F'
   },
-  buttonContainer: {
+  buttonsContainer: {
+    flexDirection: 'row',
     height: '80%',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  buttonContainer: {
+    width: 130,
+    marginRight: 10,
+    marginLeft: 10
   },
   buttonText: {
     fontFamily: 'ACB',
