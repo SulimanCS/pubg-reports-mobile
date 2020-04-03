@@ -1,8 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { Animated, YellowBox, StyleSheet, Alert, Text, View, TouchableOpacity } from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
+import { Animated, YellowBox, Alert, Text, View, TouchableOpacity } from 'react-native';
 import { Surface, Button } from 'react-native-paper';
+import styles from './Styles'
+import firstScreenStyles from './FirstScreenStyles'
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -84,22 +85,22 @@ export default class LifetimeStats extends React.Component {
         <View style={styles.container}>
           <Text style={styles.titleText}>{ID}</Text>
           <FadeInView duration={1450} value={1}>
-            <View style={styles.optionsContainer}>
+            <View style={firstScreenStyles.optionsContainer}>
               <View>
-                <Text style={styles.surfaceText}>Select  a  mode</Text>
+                <Text style={firstScreenStyles.surfaceText}>Select  a  mode</Text>
               </View>
-              <View style={styles.buttonsContainer}>
+              <View style={firstScreenStyles.buttonsContainer}>
                 <TouchableOpacity onPress={() => this.handleClickFirstScreen('FPP')}>
-                  <View style={styles.surfaceContainer}>
-                    <Surface style={styles.surface}>
-                          <Text style={styles.surfaceText}>FPP</Text>
+                  <View style={firstScreenStyles.surfaceContainer}>
+                    <Surface style={firstScreenStyles.surface}>
+                          <Text style={firstScreenStyles.surfaceText}>FPP</Text>
                     </Surface>
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.handleClickFirstScreen('TPP')}>
-                  <View style={styles.surfaceContainer}>
-                    <Surface style={styles.surface}>
-                          <Text style={styles.surfaceText}>TPP</Text>
+                  <View style={firstScreenStyles.surfaceContainer}>
+                    <Surface style={firstScreenStyles.surface}>
+                          <Text style={firstScreenStyles.surfaceText}>TPP</Text>
                     </Surface>
                   </View>
                 </TouchableOpacity>
@@ -112,19 +113,19 @@ export default class LifetimeStats extends React.Component {
           <View style={styles.container}>
             <Text style={styles.titleText}>{ID}</Text>
             <FadeOutView duration={1450} value={0}>
-              <View style={styles.optionsContainer}>
+              <View style={firstScreenStyles.optionsContainer}>
                 <View>
-                  <Text style={styles.surfaceText}>Select  a  mode</Text>
+                  <Text style={firstScreenStyles.surfaceText}>Select  a  mode</Text>
                 </View>
-                <View style={styles.buttonsContainer}>
-                  <View style={styles.surfaceContainer}>
-                    <Surface style={styles.surface}>
-                          <Text style={styles.surfaceText}>FPP</Text>
+                <View style={firstScreenStyles.buttonsContainer}>
+                  <View style={firstScreenStyles.surfaceContainer}>
+                    <Surface style={firstScreenStyles.surface}>
+                          <Text style={firstScreenStyles.surfaceText}>FPP</Text>
                     </Surface>
                   </View>
-                  <View style={styles.surfaceContainer}>
-                    <Surface style={styles.surface}>
-                          <Text style={styles.surfaceText}>TPP</Text>
+                  <View style={firstScreenStyles.surfaceContainer}>
+                    <Surface style={firstScreenStyles.surface}>
+                          <Text style={firstScreenStyles.surfaceText}>TPP</Text>
                     </Surface>
                   </View>
                 </View>
@@ -140,52 +141,3 @@ export default class LifetimeStats extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
-  titleText: {
-    marginTop: hp('5%'),
-    fontFamily: 'ACB',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    lineHeight: 21,
-    color: '#A0060F'
-  },
-  optionsContainer: {
-    flexDirection: 'column',
-    height: '87%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  surfaceContainer: {
-    marginLeft: 5,
-    marginRight: 5
-  },
-  surface: {
-    marginTop: 10,
-    width: wp('45%'),
-    padding: 8,
-    height: 80,
-    justifyContent: 'center',
-    elevation: 4,
-    borderRadius: 10
-  },
-  surfaceText: {
-    fontSize: 30,
-    textAlign: 'center',
-    fontFamily: 'ACB',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    color: '#333'
-  }
-});
