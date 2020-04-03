@@ -71,14 +71,17 @@ export default class GameID extends React.Component {
     typedGameID: '',
     gameID: null,
     gameIDLoaded: false,
+    accountID: null,
     platform: 'steam'
   };
 
   async componentDidMount() {
     ID = await SecureStore.getItemAsync('gameID')
+    longID = await SecureStore.getItemAsync('accountID')
     this.setState({
       gameID: ID,
-      gameIDLoaded: true
+      gameIDLoaded: true,
+      accountID: longID
     });
   }
 
@@ -92,6 +95,7 @@ export default class GameID extends React.Component {
     validID
     ? (
       SecureStore.setItemAsync('gameID', this.state.gameID),
+      SecureStore.setItemAsync('accountID', this.state.accountID),
       callback(this.state.gameID)
     )
     : alert('Invalid PUBG ID')
@@ -110,8 +114,11 @@ export default class GameID extends React.Component {
       .then(res => res.json())
       .then(data => {
         console.log(data['data'][0]['attributes']['name'])
-        console.log(this.state.gameID)
-        this.setState({gameID: data['data'][0]['attributes']['name']})
+        console.log(data['data'][0]['id'])
+        this.setState({
+          gameID: data['data'][0]['attributes']['name'],
+          accountID: data['data'][0]['id']
+        })
         this.storeID(true)
       })
       .catch(err => this.storeID(false))
