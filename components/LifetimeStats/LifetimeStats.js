@@ -88,7 +88,7 @@ export default class LifetimeStats extends React.Component {
               <TouchableOpacity onPress={() => console.log('TPP hit')}>
                 <View style={styles.surfaceContainer}>
                   <Surface style={styles.surface}>
-                        <Text style={styles.surfaceText}>FPP</Text>
+                        <Text style={styles.surfaceText}>TPP</Text>
                   </Surface>
                 </View>
               </TouchableOpacity>
@@ -110,7 +110,7 @@ export default class LifetimeStats extends React.Component {
               <TouchableOpacity onPress={() => console.log('TPP hit')}>
                 <View style={styles.surfaceContainer}>
                   <Surface style={styles.surface}>
-                        <Text style={styles.surfaceText}>FPP</Text>
+                        <Text style={styles.surfaceText}>TPP</Text>
                   </Surface>
                 </View>
               </TouchableOpacity>
