@@ -117,20 +117,16 @@ export default class LifetimeStats extends React.Component {
                   <Text style={styles.surfaceText}>Select  a  mode</Text>
                 </View>
                 <View style={styles.buttonsContainer}>
-                  <TouchableOpacity>
-                    <View style={styles.surfaceContainer}>
-                      <Surface style={styles.surface}>
-                            <Text style={styles.surfaceText}>FPP</Text>
-                      </Surface>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <View style={styles.surfaceContainer}>
-                      <Surface style={styles.surface}>
-                            <Text style={styles.surfaceText}>TPP</Text>
-                      </Surface>
-                    </View>
-                  </TouchableOpacity>
+                  <View style={styles.surfaceContainer}>
+                    <Surface style={styles.surface}>
+                          <Text style={styles.surfaceText}>FPP</Text>
+                    </Surface>
+                  </View>
+                  <View style={styles.surfaceContainer}>
+                    <Surface style={styles.surface}>
+                          <Text style={styles.surfaceText}>TPP</Text>
+                    </Surface>
+                  </View>
                 </View>
               </View>
             </FadeOutView>
