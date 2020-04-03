@@ -1,12 +1,37 @@
 
-import React from 'react';
-import { YellowBox, StyleSheet, Alert, Text, View, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Animated, YellowBox, StyleSheet, Alert, Text, View, TouchableOpacity } from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
-import { Button } from 'react-native-paper';
+import { Surface, Button } from 'react-native-paper';
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
 ]);
+
+const FadeInView = (props) => {
+  const [fadeAnim] = useState(new Animated.Value(0))  // Initial value for opacity: 0
+
+  React.useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: props.value,
+        duration: props.duration,
+      }
+    ).start();
+  }, [])
+
+  return (
+    <Animated.View                 // Special animatable View
+      style={{
+        ...props.style,
+        opacity: fadeAnim,         // Bind opacity to animated value
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+}
 
 export default class LifetimeStats extends React.Component {
 
@@ -15,22 +40,24 @@ export default class LifetimeStats extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>{ID}</Text>
-        <View style={styles.optionsContainer}>
-          <TouchableOpacity onPress={() => console.log('FPP hit')}>
-            <View style={styles.surfaceContainer}>
-              <Surface style={styles.surface}>
-                    <Text style={styles.surfaceText}>FPP</Text>
-              </Surface>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log('TPP hit')}>
-            <View style={styles.surfaceContainer}>
-              <Surface style={styles.surface}>
-                    <Text style={styles.surfaceText}>FPP</Text>
-              </Surface>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <FadeInView duration={1450} value={1}>
+          <View style={styles.optionsContainer}>
+            <TouchableOpacity onPress={() => console.log('FPP hit')}>
+              <View style={styles.surfaceContainer}>
+                <Surface style={styles.surface}>
+                      <Text style={styles.surfaceText}>FPP</Text>
+                </Surface>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => console.log('TPP hit')}>
+              <View style={styles.surfaceContainer}>
+                <Surface style={styles.surface}>
+                      <Text style={styles.surfaceText}>FPP</Text>
+                </Surface>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </FadeInView>
       </View>
     );
   }
