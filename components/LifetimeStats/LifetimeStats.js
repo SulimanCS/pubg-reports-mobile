@@ -85,20 +85,25 @@ export default class LifetimeStats extends React.Component {
           <Text style={styles.titleText}>{ID}</Text>
           <FadeInView duration={1450} value={1}>
             <View style={styles.optionsContainer}>
-              <TouchableOpacity onPress={() => this.handleClickFirstScreen('FPP')}>
-                <View style={styles.surfaceContainer}>
-                  <Surface style={styles.surface}>
-                        <Text style={styles.surfaceText}>FPP</Text>
-                  </Surface>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => this.handleClickFirstScreen('TPP')}>
-                <View style={styles.surfaceContainer}>
-                  <Surface style={styles.surface}>
-                        <Text style={styles.surfaceText}>TPP</Text>
-                  </Surface>
-                </View>
-              </TouchableOpacity>
+              <View>
+                <Text style={styles.surfaceText}>Select  a  mode</Text>
+              </View>
+              <View style={styles.buttonsContainer}>
+                <TouchableOpacity onPress={() => this.handleClickFirstScreen('FPP')}>
+                  <View style={styles.surfaceContainer}>
+                    <Surface style={styles.surface}>
+                          <Text style={styles.surfaceText}>FPP</Text>
+                    </Surface>
+                  </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.handleClickFirstScreen('TPP')}>
+                  <View style={styles.surfaceContainer}>
+                    <Surface style={styles.surface}>
+                          <Text style={styles.surfaceText}>TPP</Text>
+                    </Surface>
+                  </View>
+                </TouchableOpacity>
+              </View>
             </View>
           </FadeInView>
         </View>
@@ -108,20 +113,25 @@ export default class LifetimeStats extends React.Component {
             <Text style={styles.titleText}>{ID}</Text>
             <FadeOutView duration={1450} value={0}>
               <View style={styles.optionsContainer}>
-                <TouchableOpacity>
-                  <View style={styles.surfaceContainer}>
-                    <Surface style={styles.surface}>
-                          <Text style={styles.surfaceText}>FPP</Text>
-                    </Surface>
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                  <View style={styles.surfaceContainer}>
-                    <Surface style={styles.surface}>
-                          <Text style={styles.surfaceText}>TPP</Text>
-                    </Surface>
-                  </View>
-                </TouchableOpacity>
+                <View>
+                  <Text style={styles.surfaceText}>Select  a  mode</Text>
+                </View>
+                <View style={styles.buttonsContainer}>
+                  <TouchableOpacity>
+                    <View style={styles.surfaceContainer}>
+                      <Surface style={styles.surface}>
+                            <Text style={styles.surfaceText}>FPP</Text>
+                      </Surface>
+                    </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                    <View style={styles.surfaceContainer}>
+                      <Surface style={styles.surface}>
+                            <Text style={styles.surfaceText}>TPP</Text>
+                      </Surface>
+                    </View>
+                  </TouchableOpacity>
+                </View>
               </View>
             </FadeOutView>
           </View>
@@ -150,8 +160,13 @@ const styles = StyleSheet.create({
     color: '#A0060F'
   },
   optionsContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     height: '87%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -174,6 +189,7 @@ const styles = StyleSheet.create({
     fontFamily: 'ACB',
     fontStyle: 'normal',
     fontWeight: 'bold',
+    textTransform: 'uppercase',
     color: '#333'
   }
 });
