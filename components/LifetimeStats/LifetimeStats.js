@@ -35,7 +35,7 @@ const FadeInView = (props) => {
 }
 
 const FadeOutView = (props) => {
-  const [fadeAnim] = useState(new Animated.Value(1))  // Initial value for opacity: 0
+  const [fadeAnim] = useState(new Animated.Value(1))  // Initial value for opacity: 1
 
   React.useEffect(() => {
     Animated.timing(
@@ -87,7 +87,7 @@ export default class LifetimeStats extends React.Component {
     setTimeout(() => {
       console.log('timeout')
       this.setState({lifetmeStatsScreen: true})
-    }, 1550)
+    }, 2550)
   }
 
   render() {
@@ -178,7 +178,40 @@ export default class LifetimeStats extends React.Component {
                   </TouchableOpacity>
                 </View>
             </View>
-          ) : null
+          ) : (
+            !this.state.lifetmeStatsScreen ? (
+              <View style={styles.container}>
+                <Text style={styles.titleText}>{ID}</Text>
+                  <View style={secondScreenStyles.optionsContainer}>
+                    <FadeOutView duration={1450} value={0}>
+                      <View>
+                        <Surface style={secondScreenStyles.surface}>
+                              <Text style={styles.surfaceText}>Solo</Text>
+                        </Surface>
+                      </View>
+                    </FadeOutView>
+                    <FadeOutView duration={1850} value={0}>
+                      <View>
+                        <Surface style={secondScreenStyles.surface}>
+                              <Text style={styles.surfaceText}>Duo</Text>
+                        </Surface>
+                      </View>
+                    </FadeOutView>
+                    <FadeOutView duration={2250} value={0}>
+                      <View>
+                        <Surface style={secondScreenStyles.surface}>
+                              <Text style={styles.surfaceText}>Squads</Text>
+                        </Surface>
+                      </View>
+                    </FadeOutView>
+                  </View>
+              </View>
+            ) : (
+              <View style={styles.container}>
+                <Text style={styles.titleText}>placeholder</Text>
+              </View>
+            )
+          )
         )
       )
     );
