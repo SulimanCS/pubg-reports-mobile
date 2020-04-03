@@ -14,6 +14,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 21,
     color: '#A0060F'
+  },
+  surfaceText: {
+    fontSize: 30,
+    textAlign: 'center',
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    color: '#333'
   }
 });
 

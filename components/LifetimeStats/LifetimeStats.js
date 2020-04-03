@@ -4,6 +4,7 @@ import { Animated, YellowBox, Alert, Text, View, TouchableOpacity } from 'react-
 import { Surface, Button } from 'react-native-paper';
 import styles from './Styles'
 import firstScreenStyles from './FirstScreenStyles'
+import secondScreenStyles from './SecondScreenStyles'
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -87,20 +88,20 @@ export default class LifetimeStats extends React.Component {
           <FadeInView duration={1450} value={1}>
             <View style={firstScreenStyles.optionsContainer}>
               <View>
-                <Text style={firstScreenStyles.surfaceText}>Select  a  mode</Text>
+                <Text style={styles.surfaceText}>Select  a  mode</Text>
               </View>
               <View style={firstScreenStyles.buttonsContainer}>
                 <TouchableOpacity onPress={() => this.handleClickFirstScreen('FPP')}>
                   <View style={firstScreenStyles.surfaceContainer}>
                     <Surface style={firstScreenStyles.surface}>
-                          <Text style={firstScreenStyles.surfaceText}>FPP</Text>
+                          <Text style={styles.surfaceText}>FPP</Text>
                     </Surface>
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.handleClickFirstScreen('TPP')}>
                   <View style={firstScreenStyles.surfaceContainer}>
                     <Surface style={firstScreenStyles.surface}>
-                          <Text style={firstScreenStyles.surfaceText}>TPP</Text>
+                          <Text style={styles.surfaceText}>TPP</Text>
                     </Surface>
                   </View>
                 </TouchableOpacity>
@@ -115,17 +116,17 @@ export default class LifetimeStats extends React.Component {
             <FadeOutView duration={1450} value={0}>
               <View style={firstScreenStyles.optionsContainer}>
                 <View>
-                  <Text style={firstScreenStyles.surfaceText}>Select  a  mode</Text>
+                  <Text style={styles.surfaceText}>Select  a  mode</Text>
                 </View>
                 <View style={firstScreenStyles.buttonsContainer}>
                   <View style={firstScreenStyles.surfaceContainer}>
                     <Surface style={firstScreenStyles.surface}>
-                          <Text style={firstScreenStyles.surfaceText}>FPP</Text>
+                          <Text style={styles.surfaceText}>FPP</Text>
                     </Surface>
                   </View>
                   <View style={firstScreenStyles.surfaceContainer}>
                     <Surface style={firstScreenStyles.surface}>
-                          <Text style={firstScreenStyles.surfaceText}>TPP</Text>
+                          <Text style={styles.surfaceText}>TPP</Text>
                     </Surface>
                   </View>
                 </View>
@@ -135,6 +136,23 @@ export default class LifetimeStats extends React.Component {
         ) : (
           <View style={styles.container}>
             <Text style={styles.titleText}>{ID}</Text>
+              <View style={secondScreenStyles.optionsContainer}>
+                <View>
+                  <Surface style={secondScreenStyles.surface}>
+                        <Text style={styles.surfaceText}>Solo</Text>
+                  </Surface>
+                </View>
+                <View>
+                  <Surface style={secondScreenStyles.surface}>
+                        <Text style={styles.surfaceText}>Duo</Text>
+                  </Surface>
+                </View>
+                <View>
+                  <Surface style={secondScreenStyles.surface}>
+                        <Text style={styles.surfaceText}>Squads</Text>
+                  </Surface>
+                </View>
+              </View>
           </View>
         )
       )
