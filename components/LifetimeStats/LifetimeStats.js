@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Animated, YellowBox, Alert, Text, View, TouchableOpacity } from 'react-native';
 import { Surface, Button } from 'react-native-paper';
@@ -137,21 +136,27 @@ export default class LifetimeStats extends React.Component {
           <View style={styles.container}>
             <Text style={styles.titleText}>{ID}</Text>
               <View style={secondScreenStyles.optionsContainer}>
-                <View>
-                  <Surface style={secondScreenStyles.surface}>
-                        <Text style={styles.surfaceText}>Solo</Text>
-                  </Surface>
-                </View>
-                <View>
-                  <Surface style={secondScreenStyles.surface}>
-                        <Text style={styles.surfaceText}>Duo</Text>
-                  </Surface>
-                </View>
-                <View>
-                  <Surface style={secondScreenStyles.surface}>
-                        <Text style={styles.surfaceText}>Squads</Text>
-                  </Surface>
-                </View>
+                <FadeInView duration={1450} value={1}>
+                  <View>
+                    <Surface style={secondScreenStyles.surface}>
+                          <Text style={styles.surfaceText}>Solo</Text>
+                    </Surface>
+                  </View>
+                </FadeInView>
+                <FadeInView duration={1850} value={1}>
+                  <View>
+                    <Surface style={secondScreenStyles.surface}>
+                          <Text style={styles.surfaceText}>Duo</Text>
+                    </Surface>
+                  </View>
+                </FadeInView>
+                <FadeInView duration={2250} value={1}>
+                  <View>
+                    <Surface style={secondScreenStyles.surface}>
+                          <Text style={styles.surfaceText}>Squads</Text>
+                    </Surface>
+                  </View>
+                </FadeInView>
               </View>
           </View>
         )
