@@ -15,6 +15,22 @@ export default class LifetimeStats extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>{ID}</Text>
+        <View style={styles.optionsContainer}>
+          <TouchableOpacity onPress={() => console.log('FPP hit')}>
+            <View style={styles.surfaceContainer}>
+              <Surface style={styles.surface}>
+                    <Text style={styles.surfaceText}>FPP</Text>
+              </Surface>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => console.log('TPP hit')}>
+            <View style={styles.surfaceContainer}>
+              <Surface style={styles.surface}>
+                    <Text style={styles.surfaceText}>FPP</Text>
+              </Surface>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -34,4 +50,31 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     color: '#A0060F'
   },
+  optionsContainer: {
+    flexDirection: 'row',
+    height: '87%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  surfaceContainer: {
+    marginLeft: 5,
+    marginRight: 5
+  },
+  surface: {
+    marginTop: 10,
+    width: wp('45%'),
+    padding: 8,
+    height: 80,
+    justifyContent: 'center',
+    elevation: 4,
+    borderRadius: 10
+  },
+  surfaceText: {
+    fontSize: 30,
+    textAlign: 'center',
+    fontFamily: 'ACB',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    color: '#333'
+  }
 });
