@@ -33,32 +33,91 @@ const FadeInView = (props) => {
   );
 }
 
+const FadeOutView = (props) => {
+  const [fadeAnim] = useState(new Animated.Value(1))  // Initial value for opacity: 0
+
+  React.useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: props.value,
+        duration: props.duration,
+      }
+    ).start();
+  }, [])
+
+  return (
+    <Animated.View                 // Special animatable View
+      style={{
+        ...props.style,
+        opacity: fadeAnim,         // Bind opacity to animated value
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+}
+
 export default class LifetimeStats extends React.Component {
+
+  state = {
+    firstChoice: true
+  }
+
+  handleClick = () => {
+    console.log('hi')
+    this.setState({firstChoice: false})
+    setTimeout(() => console.log('timeout'), 1550)
+  }
 
   render() {
     const { ID } = this.props.route.params
     return (
-      <View style={styles.container}>
-        <Text style={styles.titleText}>{ID}</Text>
-        <FadeInView duration={1450} value={1}>
-          <View style={styles.optionsContainer}>
-            <TouchableOpacity onPress={() => console.log('FPP hit')}>
-              <View style={styles.surfaceContainer}>
-                <Surface style={styles.surface}>
-                      <Text style={styles.surfaceText}>FPP</Text>
-                </Surface>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => console.log('TPP hit')}>
-              <View style={styles.surfaceContainer}>
-                <Surface style={styles.surface}>
-                      <Text style={styles.surfaceText}>FPP</Text>
-                </Surface>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </FadeInView>
-      </View>
+      this.state.firstChoice ? (
+        <View style={styles.container}>
+          <Text style={styles.titleText}>{ID}</Text>
+          <FadeInView duration={1450} value={1}>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity onPress={this.handleClick}>
+                <View style={styles.surfaceContainer}>
+                  <Surface style={styles.surface}>
+                        <Text style={styles.surfaceText}>FPP</Text>
+                  </Surface>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => console.log('TPP hit')}>
+                <View style={styles.surfaceContainer}>
+                  <Surface style={styles.surface}>
+                        <Text style={styles.surfaceText}>FPP</Text>
+                  </Surface>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </FadeInView>
+        </View>
+      ) : (
+        <View style={styles.container}>
+          <Text style={styles.titleText}>{ID}</Text>
+          <FadeOutView duration={1450} value={0}>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity onPress={this.handleClick}>
+                <View style={styles.surfaceContainer}>
+                  <Surface style={styles.surface}>
+                        <Text style={styles.surfaceText}>FPP</Text>
+                  </Surface>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => console.log('TPP hit')}>
+                <View style={styles.surfaceContainer}>
+                  <Surface style={styles.surface}>
+                        <Text style={styles.surfaceText}>FPP</Text>
+                  </Surface>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </FadeOutView>
+        </View>
+      )
     );
   }
 }
