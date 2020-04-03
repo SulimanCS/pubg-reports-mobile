@@ -64,7 +64,9 @@ export default class LifetimeStats extends React.Component {
   state = {
     firstChoiceScreen: true,
     firstChoice: null,
-    secondChoiceScreen: false
+    secondChoiceScreen: false,
+    secondChoice: null,
+    lifetmeStatsScreen: false
   }
 
   handleClickFirstScreen = (choice) => {
@@ -75,6 +77,16 @@ export default class LifetimeStats extends React.Component {
     setTimeout(() => {
       console.log('timeout')
       this.setState({secondChoiceScreen: true})
+    }, 1550)
+  }
+
+  handleClickSecondScreen = (choice) => {
+    this.setState({
+      secondChoice: choice
+    })
+    setTimeout(() => {
+      console.log('timeout')
+      this.setState({lifetmeStatsScreen: true})
     }, 1550)
   }
 
@@ -133,32 +145,40 @@ export default class LifetimeStats extends React.Component {
             </FadeOutView>
           </View>
         ) : (
-          <View style={styles.container}>
-            <Text style={styles.titleText}>{ID}</Text>
-              <View style={secondScreenStyles.optionsContainer}>
-                <FadeInView duration={1450} value={1}>
-                  <View>
-                    <Surface style={secondScreenStyles.surface}>
-                          <Text style={styles.surfaceText}>Solo</Text>
-                    </Surface>
-                  </View>
-                </FadeInView>
-                <FadeInView duration={1850} value={1}>
-                  <View>
-                    <Surface style={secondScreenStyles.surface}>
-                          <Text style={styles.surfaceText}>Duo</Text>
-                    </Surface>
-                  </View>
-                </FadeInView>
-                <FadeInView duration={2250} value={1}>
-                  <View>
-                    <Surface style={secondScreenStyles.surface}>
-                          <Text style={styles.surfaceText}>Squads</Text>
-                    </Surface>
-                  </View>
-                </FadeInView>
-              </View>
-          </View>
+          !this.state.secondChoice ? (
+            <View style={styles.container}>
+              <Text style={styles.titleText}>{ID}</Text>
+                <View style={secondScreenStyles.optionsContainer}>
+                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('Solo')}>
+                    <FadeInView duration={1450} value={1}>
+                      <View>
+                        <Surface style={secondScreenStyles.surface}>
+                              <Text style={styles.surfaceText}>Solo</Text>
+                        </Surface>
+                      </View>
+                    </FadeInView>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('Duo')}>
+                    <FadeInView duration={1850} value={1}>
+                      <View>
+                        <Surface style={secondScreenStyles.surface}>
+                              <Text style={styles.surfaceText}>Duo</Text>
+                        </Surface>
+                      </View>
+                    </FadeInView>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('Squads')}>
+                    <FadeInView duration={2250} value={1}>
+                      <View>
+                        <Surface style={secondScreenStyles.surface}>
+                              <Text style={styles.surfaceText}>Squads</Text>
+                        </Surface>
+                      </View>
+                    </FadeInView>
+                  </TouchableOpacity>
+                </View>
+            </View>
+          ) : null
         )
       )
     );
