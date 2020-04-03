@@ -104,14 +104,14 @@ export default class LifetimeStats extends React.Component {
             <Text style={styles.titleText}>{ID}</Text>
             <FadeOutView duration={1450} value={0}>
               <View style={styles.optionsContainer}>
-                <TouchableOpacity onPress={this.handleClick}>
+                <TouchableOpacity>
                   <View style={styles.surfaceContainer}>
                     <Surface style={styles.surface}>
                           <Text style={styles.surfaceText}>FPP</Text>
                     </Surface>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log('TPP hit')}>
+                <TouchableOpacity>
                   <View style={styles.surfaceContainer}>
                     <Surface style={styles.surface}>
                           <Text style={styles.surfaceText}>TPP</Text>
