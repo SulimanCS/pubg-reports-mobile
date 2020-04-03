@@ -87,6 +87,13 @@ export default class HomeScreen extends React.Component {
     this.setState({gameID: passedGameID})
   }
 
+  navigateToTrack = () => {
+    const { navigation } = this.props;
+    this.state.gameID
+    ? navigation.navigate("placeholder")
+    : alert('Please link a valid PUBG ID in the PUBG ID page')
+  }
+
   render() {
     const { navigation } = this.props;
     return (
@@ -95,7 +102,7 @@ export default class HomeScreen extends React.Component {
           <Text style={styles.titleText}>PUBG Reports</Text>
           <TrackIcon
             style={styles.trackIcon}
-            onPress={() => navigation.navigate("placeholder")}
+            onPress={this.navigateToTrack}
           />
           <IDIcon
             style={styles.idIcon}
