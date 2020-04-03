@@ -45,6 +45,7 @@ export default class UserInfo extends React.Component {
                 color="#000"
                 onPress={() => navigation.navigate("LifetimeStats", {
                   ID: this.props.ID,
+                  longID: this.props.longID,
                   platform: this.props.platform
                 })}
               >
