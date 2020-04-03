@@ -42,7 +42,10 @@ export default class UserInfo extends React.Component {
               <Button
                 mode="contained"
                 color="#000"
-                onPress={() => navigation.navigate("LifetimeStats", {ID: this.props.ID})}
+                onPress={() => navigation.navigate("LifetimeStats", {
+                  ID: this.props.ID,
+                  platform: this.props.platform
+                })}
               >
                 <Text style={styles.buttonText}>Lifetime Stats</Text>
               </Button>

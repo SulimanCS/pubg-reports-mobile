@@ -63,6 +63,8 @@ const FadeOutView = (props) => {
 export default class LifetimeStats extends React.Component {
 
   state = {
+    ID: this.props.route.params.ID,
+    platform: this.props.route.params.platform,
     firstChoiceScreen: true,
     firstChoice: null,
     secondChoiceScreen: false,
@@ -92,10 +94,9 @@ export default class LifetimeStats extends React.Component {
   }
 
   Stats = () => {
-    const { ID } = this.props.route.params
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>{ID}</Text>
+        <Text style={styles.titleText}>{this.state.ID}</Text>
         <View style={statsStyles.optionsContainer}>
           <FadeInView duration={1450} value={1}>
             <View style={statsStyles.row}>
@@ -299,11 +300,10 @@ export default class LifetimeStats extends React.Component {
   }
 
   render() {
-    const { ID } = this.props.route.params
     return (
       this.state.firstChoiceScreen ? (
         <View style={styles.container}>
-          <Text style={styles.titleText}>{ID}</Text>
+          <Text style={styles.titleText}>{this.state.ID}</Text>
           <FadeInView duration={1450} value={1}>
             <View style={firstScreenStyles.optionsContainer}>
               <View>
@@ -331,7 +331,7 @@ export default class LifetimeStats extends React.Component {
       ) : (
         !this.state.secondChoiceScreen ? (
           <View style={styles.container}>
-            <Text style={styles.titleText}>{ID}</Text>
+            <Text style={styles.titleText}>{this.state.ID}</Text>
             <FadeOutView duration={1450} value={0}>
               <View style={firstScreenStyles.optionsContainer}>
                 <View>
@@ -355,7 +355,7 @@ export default class LifetimeStats extends React.Component {
         ) : (
           !this.state.secondChoice ? (
             <View style={styles.container}>
-              <Text style={styles.titleText}>{ID}</Text>
+              <Text style={styles.titleText}>{this.state.ID}</Text>
                 <View style={secondScreenStyles.optionsContainer}>
                   <TouchableOpacity onPress={() => this.handleClickSecondScreen('Solo')}>
                     <FadeInView duration={1450} value={1}>
@@ -389,7 +389,7 @@ export default class LifetimeStats extends React.Component {
           ) : (
             !this.state.lifetmeStatsScreen ? (
               <View style={styles.container}>
-                <Text style={styles.titleText}>{ID}</Text>
+                <Text style={styles.titleText}>{this.state.ID}</Text>
                   <View style={secondScreenStyles.optionsContainer}>
                     <FadeOutView duration={1450} value={0}>
                       <View>

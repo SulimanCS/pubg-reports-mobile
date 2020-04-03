@@ -148,6 +148,7 @@ export default class GameID extends React.Component {
         this.state.gameID ? (
           <UserInfo
             ID={this.state.gameID}
+            platform={this.state.platform}
             navigation={this.props.navigation}
             callback={callback}
           />
