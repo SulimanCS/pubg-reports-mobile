@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/HomeScreen/HomeScreen';
 import GameID from './components/GameID/GameID';
+import LifetimeStats from './components/LifetimeStats/LifetimeStats';
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,11 @@ export default class App extends React.Component {
         <Stack.Screen
           name="Game ID"
           component={GameID}
+          options={removeHeader}
+        />
+        <Stack.Screen
+          name="LifetimeStats"
+          component={LifetimeStats}
           options={removeHeader}
         />
       </Stack.Navigator>

@@ -24,6 +24,7 @@ export default class UserInfo extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>{this.props.ID}</Text>
@@ -41,7 +42,7 @@ export default class UserInfo extends React.Component {
               <Button
                 mode="contained"
                 color="#000"
-                onPress={null}
+                onPress={() => navigation.navigate("LifetimeStats", {ID: this.props.ID})}
               >
                 <Text style={styles.buttonText}>Lifetime Stats</Text>
               </Button>
