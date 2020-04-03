@@ -4,6 +4,7 @@ import { Surface, Button } from 'react-native-paper';
 import styles from './Styles'
 import firstScreenStyles from './FirstScreenStyles'
 import secondScreenStyles from './SecondScreenStyles'
+import statsStyles from './StatsStyles'
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -88,6 +89,213 @@ export default class LifetimeStats extends React.Component {
       console.log('timeout')
       this.setState({lifetmeStatsScreen: true})
     }, 2550)
+  }
+
+  Stats = () => {
+    const { ID } = this.props.route.params
+    return (
+      <View style={styles.container}>
+        <Text style={styles.titleText}>{ID}</Text>
+        <View style={statsStyles.optionsContainer}>
+          <FadeInView duration={1450} value={1}>
+            <View style={statsStyles.row}>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+            </View>
+          </FadeInView>
+          <FadeInView duration={1850} value={1}>
+            <View style={statsStyles.row}>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+            </View>
+          </FadeInView>
+          <FadeInView duration={2250} value={1}>
+            <View>
+              <Surface style={statsStyles.surfaceLong}>
+                <View style={statsStyles.textCentered}>
+                  <View>
+                    <Text style={statsStyles.surfaceText}>Info: </Text>
+                  </View>
+                  <View>
+                    <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                  </View>
+                </View>
+              </Surface>
+            </View>
+          </FadeInView>
+          <FadeInView duration={2850} value={1}>
+            <View style={statsStyles.row}>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+            </View>
+          </FadeInView>
+          <FadeInView duration={3350} value={1}>
+            <View style={statsStyles.row}>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+            </View>
+          </FadeInView>
+          <FadeInView duration={3850} value={1}>
+            <View>
+              <Surface style={statsStyles.surfaceLong}>
+                <View style={statsStyles.textCentered}>
+                  <View>
+                    <Text style={statsStyles.surfaceText}>Info: </Text>
+                  </View>
+                  <View>
+                    <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                  </View>
+                </View>
+              </Surface>
+            </View>
+          </FadeInView>
+          <FadeInView duration={4450} value={1}>
+            <View style={statsStyles.row}>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+            </View>
+          </FadeInView>
+          <FadeInView duration={4900} value={1}>
+            <View style={statsStyles.row}>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+              <View style={statsStyles.surfaceContainer}>
+                <Surface style={statsStyles.surface}>
+                  <View style={statsStyles.textCentered}>
+                    <View>
+                      <Text style={statsStyles.surfaceText}>Info: </Text>
+                    </View>
+                    <View>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> 1</Text>
+                    </View>
+                  </View>
+                </Surface>
+              </View>
+            </View>
+          </FadeInView>
+        </View>
+      </View>
+    );
   }
 
   render() {
@@ -207,9 +415,7 @@ export default class LifetimeStats extends React.Component {
                   </View>
               </View>
             ) : (
-              <View style={styles.container}>
-                <Text style={styles.titleText}>placeholder</Text>
-              </View>
+              <this.Stats />
             )
           )
         )
