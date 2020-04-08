@@ -5,6 +5,7 @@ import styles from './Styles'
 import firstScreenStyles from './FirstScreenStyles'
 import secondScreenStyles from './SecondScreenStyles'
 import statsStyles from './StatsStyles'
+import TOKEN from '../../TOKEN'
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -65,11 +66,31 @@ export default class LifetimeStats extends React.Component {
   state = {
     ID: this.props.route.params.ID,
     platform: this.props.route.params.platform,
+    accountID: this.props.route.params.longID,
+    stats: null,
     firstChoiceScreen: true,
     firstChoice: null,
     secondChoiceScreen: false,
     secondChoice: null,
     lifetmeStatsScreen: false
+  }
+  async componentDidMount() {
+    let options = {
+      headers: {
+        "Authorization": "Bearer " + TOKEN,
+        "Accept": "application/vnd.api+json"
+      }
+    }
+    let url = 'https://api.pubg.com/shards/' +
+    this.state.platform + '/players/' + this.state.accountID
+    + '/seasons/lifetime'
+    fetch(url, options)
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data['data']['attributes']['gameModeStats'])
+        this.setState({stats: data['data']['attributes']['gameModeStats']})
+      })
+      .catch(err => null)
   }
 
   handleClickFirstScreen = (choice) => {
