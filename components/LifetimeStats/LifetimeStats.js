@@ -114,6 +114,14 @@ export default class LifetimeStats extends React.Component {
     }, 2550)
   }
 
+  Mode = () => {
+    let mode = this.state.secondChoice
+    this.state.firstChoice != 'tpp'
+    ? mode += '-' + this.state.firstChoice
+    : null
+    return mode
+  }
+
   Stats = () => {
     return (
       <View style={styles.container}>
@@ -331,14 +339,14 @@ export default class LifetimeStats extends React.Component {
                 <Text style={styles.surfaceText}>Select  a  mode</Text>
               </View>
               <View style={firstScreenStyles.buttonsContainer}>
-                <TouchableOpacity onPress={() => this.handleClickFirstScreen('FPP')}>
+                <TouchableOpacity onPress={() => this.handleClickFirstScreen('fpp')}>
                   <View style={firstScreenStyles.surfaceContainer}>
                     <Surface style={firstScreenStyles.surface}>
                           <Text style={styles.surfaceText}>FPP</Text>
                     </Surface>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.handleClickFirstScreen('TPP')}>
+                <TouchableOpacity onPress={() => this.handleClickFirstScreen('tpp')}>
                   <View style={firstScreenStyles.surfaceContainer}>
                     <Surface style={firstScreenStyles.surface}>
                           <Text style={styles.surfaceText}>TPP</Text>
@@ -378,7 +386,7 @@ export default class LifetimeStats extends React.Component {
             <View style={styles.container}>
               <Text style={styles.titleText}>{this.state.ID}</Text>
                 <View style={secondScreenStyles.optionsContainer}>
-                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('Solo')}>
+                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('solo')}>
                     <FadeInView duration={1450} value={1}>
                       <View>
                         <Surface style={secondScreenStyles.surface}>
@@ -387,7 +395,7 @@ export default class LifetimeStats extends React.Component {
                       </View>
                     </FadeInView>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('Duo')}>
+                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('duo')}>
                     <FadeInView duration={1850} value={1}>
                       <View>
                         <Surface style={secondScreenStyles.surface}>
@@ -396,7 +404,7 @@ export default class LifetimeStats extends React.Component {
                       </View>
                     </FadeInView>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('Squads')}>
+                  <TouchableOpacity onPress={() => this.handleClickSecondScreen('squads')}>
                     <FadeInView duration={2250} value={1}>
                       <View>
                         <Surface style={secondScreenStyles.surface}>
