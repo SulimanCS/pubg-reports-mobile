@@ -136,9 +136,9 @@ export default class LifetimeStats extends React.Component {
     let heals = stats[mode]['heals']
     let boosts = stats[mode]['boosts']
     let roundsPlayed = stats[mode]['roundsPlayed']
-    let damageDealt = stats[mode]['damageDealt']
     let headshotKills = stats[mode]['headshotKills']
-    let longestKill = stats[mode]['longestKill']
+    let damageDealt = parseInt(stats[mode]['damageDealt'])
+    let longestKill = parseInt(stats[mode]['longestKill']) + 'M'
 
     // unused
     let maxKillstreaks = stats[mode]['maxKillstreaks']
