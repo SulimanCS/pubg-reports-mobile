@@ -143,6 +143,9 @@ export default class LifetimeStats extends React.Component {
     // unused
     let maxKillstreaks = stats[mode]['maxKillstreaks']
 
+    // will replace revives if selected mode is solo
+    let days = stats[mode]['days']
+
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>{this.state.ID}</Text>
@@ -209,10 +212,18 @@ export default class LifetimeStats extends React.Component {
                 <Surface style={statsStyles.surface}>
                   <View style={statsStyles.textCentered}>
                     <View>
-                      <Text style={statsStyles.surfaceText}>Revives: </Text>
+                      <Text style={statsStyles.surfaceText}>{
+                        mode.substring(0, 4) != 'solo'
+                        ? 'Revives:'
+                        : 'Days:'
+                      }</Text>
                     </View>
                     <View>
-                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> {revives}</Text>
+                      <Text style={[statsStyles.surfaceText, {color: '#A0060F'}]}> {
+                        mode.substring(0, 4) != 'solo'
+                        ? revives
+                        : days
+                      }</Text>
                     </View>
                   </View>
                 </Surface>
