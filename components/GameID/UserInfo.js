@@ -5,6 +5,7 @@ import TOKEN from '../../TOKEN'
 import Svg, { Path } from "react-native-svg";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 import { Button } from 'react-native-paper';
+import styles from './UserInfoStyles'
 
 YellowBox.ignoreWarnings([
   'Non-serializable values were found in the navigation state',
@@ -57,35 +58,3 @@ export default class UserInfo extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  },
-  titleText: {
-    marginTop: hp('5%'),
-    fontFamily: 'ACB',
-    fontStyle: 'normal',
-    fontWeight: 'bold',
-    lineHeight: 21,
-    color: '#A0060F'
-  },
-  buttonsContainer: {
-    flexDirection: 'row',
-    height: '80%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonContainer: {
-    width: 130,
-    marginRight: 10,
-    marginLeft: 10
-  },
-  buttonText: {
-    fontFamily: 'ACB',
-    fontStyle: 'normal',
-    lineHeight: 21,
-  }
-});
