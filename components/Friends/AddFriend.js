@@ -82,6 +82,7 @@ export default class AddFriend extends React.Component {
 
   async componentDidMount() {
     let friendsCount = await SecureStore.getItemAsync("lastAddedFriendID");
+    friendsCount = parseInt(friendsCount);
     this.setState({
       nextFriendID: friendsCount ? (friendsCount += 1) : 1,
       infoLoaded: true,
@@ -90,6 +91,24 @@ export default class AddFriend extends React.Component {
 
   handleGameID = (text) => {
     this.setState({ typedGameID: text });
+  };
+
+  storeFriend = (isIDValid, gameID, accountID) => {
+    const friendGameIDKey = "Friend" + this.state.nextFriendID + "gameID";
+    const friendAccountIDKey = "Friend" + this.state.nextFriendID + "accountID";
+    const friendPlatformKey = "Friend" + this.state.nextFriendID + "platform";
+    isIDValid
+      ? (SecureStore.setItemAsync(friendGameIDKey, gameID.toString()),
+        SecureStore.setItemAsync(friendAccountIDKey, accountID.toString()),
+        SecureStore.setItemAsync(
+          friendPlatformKey,
+          this.state.platform.toString()
+        ),
+        SecureStore.setItemAsync(
+          "lastAddedFriendID",
+          this.state.nextFriendID.toString()
+        ))
+      : alert("Invalid PUBG ID");
   };
 
   checkIDValidity = () => {
@@ -111,9 +130,9 @@ export default class AddFriend extends React.Component {
         console.log(data["data"][0]["id"]);
         let gameID = data["data"][0]["attributes"]["name"];
         let accountID = data["data"][0]["id"];
-        // this.storeID(true);
+        this.storeFriend(true, gameID, accountID);
       })
-      .catch((err) => null);
+      .catch((err) => this.storeFriend(false, null, null));
   };
 
   currentPlatform = (suppliedPlatform) => {
