@@ -79,11 +79,17 @@ function PlaystationIcon(props) {
 export default class AddFriend extends React.Component {
   state = {
     typedGameID: "",
+    nextFriendID: null,
+    infoLoaded: false,
     platform: "steam",
   };
 
   async componentDidMount() {
-    this.setState({});
+    let friendsCount = await SecureStore.getItemAsync("lastAddedFriendID");
+    this.setState({
+      nextFriendID: friendsCount ? (friendsCount += 1) : null,
+      infoLoaded: true,
+    });
   }
 
   handleGameID = (text) => {
@@ -111,7 +117,7 @@ export default class AddFriend extends React.Component {
   selectPlaystation = () => this.setState({ platform: "playstation" });
 
   render() {
-    return (
+    return this.state.infoLoaded ? (
       <View style={styles.container}>
         <Text style={styles.titleText}>Add a friend</Text>
         <View style={styles.inputContainer}>
@@ -154,6 +160,6 @@ export default class AddFriend extends React.Component {
           </Button>
         </View>
       </View>
-    );
+    ) : null;
   }
 }
