@@ -6,6 +6,7 @@ import styles from "./FriendsStyles";
 export default class Friends extends React.Component {
   componentDidMount() {}
   render() {
+    const { navigation } = this.props;
     const { ID } = this.props.route.params;
     return (
       <View style={styles.container}>
@@ -15,7 +16,7 @@ export default class Friends extends React.Component {
             <Button
               mode="contained"
               color="#000"
-              onPress={() => console.log("Add a friend screen")}
+              onPress={() => navigation.navigate("AddFriend", { ID: ID })}
             >
               <Text style={styles.buttonText}>Add a friend</Text>
             </Button>
