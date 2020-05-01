@@ -11,10 +11,6 @@ import {
 import * as SecureStore from "expo-secure-store";
 import TOKEN from "../../TOKEN";
 import Svg, { Path } from "react-native-svg";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
 import { Button } from "react-native-paper";
 import styles from "./AddFriendStyles";
 
@@ -96,6 +92,30 @@ export default class AddFriend extends React.Component {
     this.setState({ typedGameID: text });
   };
 
+  checkIDValidity = () => {
+    let options = {
+      headers: {
+        "Authorization": "Bearer " + TOKEN,
+        "Accept": "application/vnd.api+json",
+      },
+    };
+    let url =
+      "https://api.pubg.com/shards/" +
+      this.state.platform +
+      "/players?filter[playerNames]=" +
+      this.state.typedGameID;
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data["data"][0]["attributes"]["name"]);
+        console.log(data["data"][0]["id"]);
+        let gameID = data["data"][0]["attributes"]["name"];
+        let accountID = data["data"][0]["id"];
+        // this.storeID(true);
+      })
+      .catch((err) => null);
+  };
+
   currentPlatform = (suppliedPlatform) => {
     let returnValue = null;
     this.state.platform === suppliedPlatform
@@ -155,7 +175,7 @@ export default class AddFriend extends React.Component {
             placeholder="Enter PUBG ID (case sensitive)"
             onChangeText={(text) => this.handleGameID(text)}
           />
-          <Button mode="contained" color="#000" onPress={() => null}>
+          <Button mode="contained" color="#000" onPress={this.checkIDValidity}>
             <Text style={styles.submitButtonText}> Add </Text>
           </Button>
         </View>
