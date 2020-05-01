@@ -87,8 +87,8 @@ export default class GameID extends React.Component {
   };
 
   async componentDidMount() {
-    ID = await SecureStore.getItemAsync("gameID");
-    longID = await SecureStore.getItemAsync("accountID");
+    let ID = await SecureStore.getItemAsync("gameID");
+    let longID = await SecureStore.getItemAsync("accountID");
     this.setState({
       gameID: ID,
       gameIDLoaded: true,
