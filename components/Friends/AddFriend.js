@@ -83,7 +83,7 @@ export default class AddFriend extends React.Component {
   async componentDidMount() {
     let friendsCount = await SecureStore.getItemAsync("lastAddedFriendID");
     this.setState({
-      nextFriendID: friendsCount ? (friendsCount += 1) : null,
+      nextFriendID: friendsCount ? (friendsCount += 1) : 1,
       infoLoaded: true,
     });
   }
