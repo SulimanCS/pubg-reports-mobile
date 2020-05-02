@@ -25,7 +25,7 @@ export default class Friends extends React.Component {
             <Button
               mode="contained"
               color="#000"
-              onPress={() => console.log("Friends list screen")}
+              onPress={() => navigation.navigate("FriendsList", { ID: ID })}
             >
               <Text style={styles.buttonText}>Friends List</Text>
             </Button>

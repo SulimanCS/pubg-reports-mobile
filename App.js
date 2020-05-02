@@ -7,6 +7,7 @@ import GameID from "./components/GameID/GameID";
 import LifetimeStats from "./components/LifetimeStats/LifetimeStats";
 import Friends from "./components/Friends/Friends";
 import AddFriend from "./components/Friends/AddFriend";
+import FriendsList from "./components/Friends/FriendsList";
 
 const Stack = createStackNavigator();
 
@@ -55,6 +56,11 @@ export default class App extends React.Component {
           <Stack.Screen
             name="AddFriend"
             component={AddFriend}
+            options={removeHeader}
+          />
+          <Stack.Screen
+            name="FriendsList"
+            component={FriendsList}
             options={removeHeader}
           />
         </Stack.Navigator>
