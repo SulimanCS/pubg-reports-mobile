@@ -1,9 +1,32 @@
-import React from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Animated, StyleSheet, Text, View, ScrollView } from "react-native";
 import { Surface } from "react-native-paper";
 import * as SecureStore from "expo-secure-store";
 import Svg, { Path } from "react-native-svg";
 import styles from "./FriendsListStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
+const FadeInView = (props) => {
+  const [fadeAnim] = useState(new Animated.Value(0)); // Initial value for opacity: 0
+
+  React.useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: props.value,
+      duration: props.duration,
+    }).start();
+  }, []);
+
+  return (
+    <Animated.View // Special animatable View
+      style={{
+        ...props.style,
+        opacity: fadeAnim, // Bind opacity to animated value
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+};
 
 function SteamIcon(props) {
   return (
@@ -171,9 +194,11 @@ export default class Friends extends React.Component {
         <View style={styles.container}>
           <Text style={styles.titleText}>Friends List</Text>
           <ScrollView style={{ width: "100%" }}>
-            <View style={styles.optionsContainer}>
-              {this.state.friends.map(this.renderFriends)}
-            </View>
+            <FadeInView duration={1050} value={1}>
+              <View style={styles.optionsContainer}>
+                {this.state.friends.map(this.renderFriends)}
+              </View>
+            </FadeInView>
           </ScrollView>
         </View>
       )
