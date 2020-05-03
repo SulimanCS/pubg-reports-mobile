@@ -177,6 +177,10 @@ export default class Friends extends React.Component {
           </ScrollView>
         </View>
       )
-    ) : null;
+    ) : (
+      <View style={styles.container}>
+        <Text style={styles.titleText}>Friends List</Text>
+      </View>
+    );
   }
 }
