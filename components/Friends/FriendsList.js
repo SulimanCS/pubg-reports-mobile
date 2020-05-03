@@ -1,6 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Button } from "react-native-paper";
+import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { Surface } from "react-native-paper";
 import * as SecureStore from "expo-secure-store";
 import styles from "./FriendsListStyles";
 
@@ -45,6 +45,26 @@ export default class Friends extends React.Component {
     console.log(this.state.friends);
   };
 
+  renderFriends = (friend, index) => {
+    return (
+      <View key={index}>
+        <Surface style={styles.surfaceLong}>
+          <View style={styles.textCentered}>
+            <View>
+              <Text style={styles.surfaceText}>{friend["gameID"]} </Text>
+            </View>
+            {/* <View>
+              <Text style={[styles.surfaceText, { color: "#A0060F" }]}>
+                {" "}
+                test
+              </Text>
+            </View> */}
+          </View>
+        </Surface>
+      </View>
+    );
+  };
+
   render() {
     return this.state.friendsLoaded ? (
       this.state.friends.length == 0 ? (
@@ -56,6 +76,11 @@ export default class Friends extends React.Component {
       ) : (
         <View style={styles.container}>
           <Text style={styles.titleText}>Friends List</Text>
+          <ScrollView style={{ width: "100%" }}>
+            <View style={styles.optionsContainer}>
+              {this.state.friends.map(this.renderFriends)}
+            </View>
+          </ScrollView>
         </View>
       )
     ) : null;

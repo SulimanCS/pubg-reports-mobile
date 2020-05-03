@@ -19,6 +19,33 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: "#A0060F",
   },
+  optionsContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  textCentered: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  surfaceText: {
+    fontSize: 26,
+    textAlign: "center",
+    fontFamily: "ACB",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    color: "#333",
+  },
+  surfaceLong: {
+    marginTop: 10,
+    width: wp("92%"),
+    padding: 8,
+    height: 80,
+    justifyContent: "center",
+    elevation: 4,
+    borderRadius: 15,
+  },
 });
 
 export default styles;
