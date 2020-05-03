@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   textCentered: {
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
   surfaceText: {
     fontSize: 26,
@@ -45,6 +45,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     elevation: 4,
     borderRadius: 15,
+  },
+  icon: {
+    color: "#000",
+    width: 30,
+    height: 30,
+    marginRight: 13.5,
+  },
+  xboxIcon: {
+    color: "#fff",
+    width: 25,
+    height: 25,
+  },
+  playstationIcon: {
+    color: "#fff",
+    width: 30,
+    height: 27,
   },
 });
 
