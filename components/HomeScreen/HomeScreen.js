@@ -108,7 +108,7 @@ export default class HomeScreen extends React.Component {
   navigateToTrack = () => {
     const { navigation } = this.props;
     this.state.gameID
-      ? navigation.navigate("Friends", { ID: this.state.gameID })
+      ? navigation.navigate("placeholder")
       : alert("Please link a valid PUBG ID in the PUBG ID page");
   };
 
@@ -146,7 +146,12 @@ export default class HomeScreen extends React.Component {
         </View>
         <View style={styles.container}>
           <HorizSeparator style={styles.horizSeparator} />
-          <FriendsIcon style={styles.friendsIcon} />
+          <FriendsIcon
+            style={styles.friendsIcon}
+            onPress={() =>
+              navigation.navigate("Friends", { ID: this.state.gameID })
+            }
+          />
           <View style={{ alignItems: "center" }}>
             <Text style={styles.text}>Friends</Text>
           </View>
