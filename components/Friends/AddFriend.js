@@ -97,6 +97,8 @@ export default class AddFriend extends React.Component {
     const friendGameIDKey = "Friend" + this.state.nextFriendID + "gameID";
     const friendAccountIDKey = "Friend" + this.state.nextFriendID + "accountID";
     const friendPlatformKey = "Friend" + this.state.nextFriendID + "platform";
+    const { navigation } = this.props;
+
     isIDValid
       ? (SecureStore.setItemAsync(friendGameIDKey, gameID.toString()),
         SecureStore.setItemAsync(friendAccountIDKey, accountID.toString()),
@@ -107,7 +109,9 @@ export default class AddFriend extends React.Component {
         SecureStore.setItemAsync(
           "lastAddedFriendID",
           this.state.nextFriendID.toString()
-        ))
+        ),
+        alert("Friend added"),
+        navigation.navigate("Friends"))
       : alert("Invalid PUBG ID");
   };
 
