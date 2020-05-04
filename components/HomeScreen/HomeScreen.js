@@ -99,18 +99,39 @@ export default class HomeScreen extends React.Component {
     return this.state.fontLoaded ? (
       <View style={styles.container}>
         <Text style={styles.titleText}>PUBG Reports</Text>
-        <TrackIcon style={styles.trackIcon} onPress={this.navigateToTrack} />
-        <IDIcon
-          style={styles.idIcon}
-          onPress={() =>
-            navigation.navigate("Game ID", { callback: this.setGameIDCallback })
-          }
-        />
-        <VertSeparator style={styles.vertSeparator} />
-        <HorizSeparator style={styles.horizSeparator} />
-        <Text style={styles.trackText}>Track</Text>
-        <Text style={styles.idText}>PUBG ID</Text>
-        <this.linkIDMessage />
+        <View style={styles.row}>
+          <View style={styles.margins}>
+            <TrackIcon
+              style={styles.trackIcon}
+              onPress={this.navigateToTrack}
+            />
+            <View style={{ alignItems: "center" }}>
+              <Text style={styles.trackText}>Track</Text>
+            </View>
+          </View>
+          <View style={styles.margins}>
+            <VertSeparator style={styles.vertSeparator} />
+          </View>
+          <View style={styles.margins}>
+            <IDIcon
+              style={styles.idIcon}
+              onPress={() =>
+                navigation.navigate("Game ID", {
+                  callback: this.setGameIDCallback,
+                })
+              }
+            />
+            <View style={{ alignItems: "center" }}>
+              <Text style={styles.idText}>PUBG ID</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.container}>
+          <HorizSeparator style={styles.horizSeparator} />
+          <View style={{ marginTop: 100 }}>
+            <this.linkIDMessage />
+          </View>
+        </View>
       </View>
     ) : null;
   }

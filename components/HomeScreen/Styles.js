@@ -1,18 +1,27 @@
 import { StyleSheet } from "react-native";
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+  },
+  row: {
+    flex: 0.3,
+    flexDirection: "row",
+    marginTop: 76,
+    right: 4.8,
+  },
+  margins: {
+    marginLeft: 20,
+    marginRight: 20,
   },
   titleText: {
-    position: "absolute",
-    width: 112,
-    height: 30,
-    left: 146,
-    top: 50,
+    marginTop: hp("5%"),
     fontFamily: "ACB",
     fontStyle: "normal",
     fontWeight: "bold",
@@ -22,26 +31,17 @@ const styles = StyleSheet.create({
   },
   trackIcon: {
     color: "#000",
-    position: "absolute",
     width: 100,
     height: 100,
-    left: 47,
-    top: 137,
   },
   idIcon: {
     color: "#000",
-    position: "absolute",
     width: 88,
     height: 78,
-    left: 232,
-    top: 146,
+    marginTop: 10,
   },
-  trackText: {
-    position: "absolute",
-    width: 86,
-    height: 30,
-    left: 80,
-    top: 241,
+  idText: {
+    top: 20.5,
     fontFamily: "ACB",
     fontStyle: "normal",
     fontWeight: "bold",
@@ -49,12 +49,8 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: "#A0060F",
   },
-  idText: {
-    position: "absolute",
-    width: 86,
-    height: 30,
-    left: 254,
-    top: 241,
+  trackText: {
+    top: 10,
     fontFamily: "ACB",
     fontStyle: "normal",
     fontWeight: "bold",
@@ -63,18 +59,9 @@ const styles = StyleSheet.create({
     color: "#A0060F",
   },
   vertSeparator: {
-    position: "absolute",
     width: 5,
     height: 128,
-    left: 185,
-    top: 122,
-  },
-  horizSeparator: {
-    position: "absolute",
-    width: 5,
-    height: 215.85,
-    left: 83.5,
-    top: 285,
+    bottom: 10,
   },
 });
 
