@@ -95,7 +95,7 @@ export default class HomeScreen extends React.Component {
 
   linkIDMessage = () => {
     return this.state.gameID ? (
-      <Text style={styles.text}>Logged in as: {this.state.gameID}</Text>
+      <Text style={styles.text}>Logged in as: {" " + this.state.gameID}</Text>
     ) : (
       <Text>Please link your PUBG ID in the PUBG ID page</Text>
     );
