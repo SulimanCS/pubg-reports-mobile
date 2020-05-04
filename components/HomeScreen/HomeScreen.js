@@ -146,7 +146,11 @@ export default class HomeScreen extends React.Component {
         </View>
         <View style={styles.container}>
           <HorizSeparator style={styles.horizSeparator} />
-          <View style={{ marginTop: 100 }}>
+          <FriendsIcon style={styles.friendsIcon} />
+          <View style={{ alignItems: "center" }}>
+            <Text style={styles.text}>Friends</Text>
+          </View>
+          <View style={{ marginTop: 30 }}>
             <this.linkIDMessage />
           </View>
         </View>

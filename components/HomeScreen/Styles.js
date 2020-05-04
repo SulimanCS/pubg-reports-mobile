@@ -63,6 +63,20 @@ const styles = StyleSheet.create({
     height: 128,
     bottom: 10,
   },
+  friendsIcon: {
+    marginTop: 20,
+    color: "#000",
+    width: 90,
+    height: 90,
+  },
+  text: {
+    fontFamily: "ACB",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    lineHeight: 21,
+    textTransform: "uppercase",
+    color: "#A0060F",
+  },
 });
 
 export default styles;
