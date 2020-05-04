@@ -167,16 +167,21 @@ export default class Friends extends React.Component {
         <Surface
           style={[styles.surfaceLong, this.surfaceColor(friend["platform"])]}
         >
-          <View style={styles.textCentered}>
-            <View>
-              <Text
-                style={[styles.surfaceText, this.textColor(friend["platform"])]}
-              >
-                {friend["gameID"]}
-              </Text>
+          <TouchableOpacity>
+            <View style={styles.textCentered}>
+              <View>
+                <Text
+                  style={[
+                    styles.surfaceText,
+                    this.textColor(friend["platform"]),
+                  ]}
+                >
+                  {friend["gameID"]}
+                </Text>
+              </View>
+              <View>{this.renderIcon(friend["platform"])}</View>
             </View>
-            <View>{this.renderIcon(friend["platform"])}</View>
-          </View>
+          </TouchableOpacity>
         </Surface>
       </View>
     );
