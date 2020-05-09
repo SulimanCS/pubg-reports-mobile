@@ -1,5 +1,11 @@
 import React from "react";
-import { StatusBar, StyleSheet, Text, View } from "react-native";
+import {
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import * as Font from "expo-font";
 import Svg, { Path } from "react-native-svg";
 import * as SecureStore from "expo-secure-store";
@@ -120,10 +126,9 @@ export default class HomeScreen extends React.Component {
         <Text style={styles.titleText}>PUBG Reports</Text>
         <View style={styles.row}>
           <View style={styles.margins}>
-            <TrackIcon
-              style={styles.trackIcon}
-              onPress={this.navigateToTrack}
-            />
+            <TouchableOpacity onPress={this.navigateToTrack}>
+              <TrackIcon style={styles.trackIcon} />
+            </TouchableOpacity>
             <View style={{ alignItems: "center" }}>
               <Text style={styles.trackText}>Track</Text>
             </View>
@@ -132,14 +137,15 @@ export default class HomeScreen extends React.Component {
             <VertSeparator style={styles.vertSeparator} />
           </View>
           <View style={styles.margins}>
-            <IDIcon
-              style={styles.idIcon}
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate("Game ID", {
                   callback: this.setGameIDCallback,
                 })
               }
-            />
+            >
+              <IDIcon style={styles.idIcon} />
+            </TouchableOpacity>
             <View style={{ alignItems: "center" }}>
               <Text style={styles.idText}>PUBG ID</Text>
             </View>
@@ -147,12 +153,13 @@ export default class HomeScreen extends React.Component {
         </View>
         <View style={styles.container}>
           <HorizSeparator style={styles.horizSeparator} />
-          <FriendsIcon
-            style={styles.friendsIcon}
+          <TouchableOpacity
             onPress={() =>
               navigation.navigate("Friends", { ID: this.state.gameID })
             }
-          />
+          >
+            <FriendsIcon style={styles.friendsIcon} />
+          </TouchableOpacity>
           <View style={{ alignItems: "center" }}>
             <Text style={styles.text}>Friends</Text>
           </View>
