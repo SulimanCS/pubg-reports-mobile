@@ -18,7 +18,17 @@ export default class Friend extends React.Component {
             </Button>
           </View>
           <View style={styles.buttonContainer}>
-            <Button mode="contained" color="#000">
+            <Button
+              mode="contained"
+              color="#000"
+              onPress={() =>
+                navigation.navigate("LifetimeStats", {
+                  ID: profile.gameID,
+                  longID: profile.accountID,
+                  platform: profile.platform,
+                })
+              }
+            >
               <Text style={styles.buttonText}>Lifetime Stats</Text>
             </Button>
           </View>
