@@ -107,6 +107,8 @@ export default class Friends extends React.Component {
       const friendPlatformKey = "Friend" + i + "platform";
 
       const gameID = await SecureStore.getItemAsync(friendGameIDKey);
+      if (gameID == null) continue;
+
       const accountID = await SecureStore.getItemAsync(friendAccountIDKey);
       const platform = await SecureStore.getItemAsync(friendPlatformKey);
 
