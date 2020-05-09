@@ -6,6 +6,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { Surface, Button } from "react-native-paper";
 import styles from "./Styles";
@@ -161,91 +162,195 @@ export default class LifetimeStats extends React.Component {
     return (
       <View style={styles.container}>
         <this.titleText />
-        <View style={statsStyles.optionsContainer}>
-          <FadeInView duration={1450} value={1}>
-            <View style={statsStyles.row}>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
-                  <View style={statsStyles.textCentered}>
-                    <View>
-                      <Text style={statsStyles.surfaceText}>Kills: </Text>
+        <ScrollView>
+          <View style={statsStyles.optionsContainer}>
+            <FadeInView duration={1450} value={1}>
+              <View style={statsStyles.row}>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>Kills: </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {kills}
+                        </Text>
+                      </View>
                     </View>
-                    <View>
-                      <Text
-                        style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                      >
-                        {" "}
-                        {kills}
-                      </Text>
+                  </Surface>
+                </View>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>Assists: </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {assists}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-                </Surface>
+                  </Surface>
+                </View>
               </View>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
-                  <View style={statsStyles.textCentered}>
-                    <View>
-                      <Text style={statsStyles.surfaceText}>Assists: </Text>
+            </FadeInView>
+            <FadeInView duration={1850} value={1}>
+              <View style={statsStyles.row}>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>Wins: </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {wins}
+                        </Text>
+                      </View>
                     </View>
-                    <View>
-                      <Text
-                        style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                      >
-                        {" "}
-                        {assists}
-                      </Text>
+                  </Surface>
+                </View>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>Top 10s: </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {top10s}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-                </Surface>
+                  </Surface>
+                </View>
               </View>
-            </View>
-          </FadeInView>
-          <FadeInView duration={1850} value={1}>
-            <View style={statsStyles.row}>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
-                  <View style={statsStyles.textCentered}>
-                    <View>
-                      <Text style={statsStyles.surfaceText}>Wins: </Text>
+            </FadeInView>
+            <FadeInView duration={2250} value={1}>
+              <View style={statsStyles.row}>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>
+                          {mode.substring(0, 4) != "solo"
+                            ? "Revives:"
+                            : "Days:"}
+                        </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {mode.substring(0, 4) != "solo" ? revives : days}
+                        </Text>
+                      </View>
                     </View>
-                    <View>
-                      <Text
-                        style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                      >
-                        {" "}
-                        {wins}
-                      </Text>
+                  </Surface>
+                </View>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>Suicides: </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {suicides}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-                </Surface>
+                  </Surface>
+                </View>
               </View>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
-                  <View style={statsStyles.textCentered}>
-                    <View>
-                      <Text style={statsStyles.surfaceText}>Top 10s: </Text>
+            </FadeInView>
+            <FadeInView duration={2850} value={1}>
+              <View style={statsStyles.row}>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>Heals: </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {heals}
+                        </Text>
+                      </View>
                     </View>
-                    <View>
-                      <Text
-                        style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                      >
-                        {" "}
-                        {top10s}
-                      </Text>
+                  </Surface>
+                </View>
+                <View style={statsStyles.surfaceContainer}>
+                  <Surface style={statsStyles.surface}>
+                    <View style={statsStyles.textCentered}>
+                      <View>
+                        <Text style={statsStyles.surfaceText}>Boosts: </Text>
+                      </View>
+                      <View>
+                        <Text
+                          style={[
+                            statsStyles.surfaceText,
+                            { color: "#A0060F" },
+                          ]}
+                        >
+                          {" "}
+                          {boosts}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-                </Surface>
+                  </Surface>
+                </View>
               </View>
-            </View>
-          </FadeInView>
-          <FadeInView duration={2250} value={1}>
-            <View style={statsStyles.row}>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
+            </FadeInView>
+            <FadeInView duration={3350} value={1}>
+              <View>
+                <Surface style={statsStyles.surfaceLong}>
                   <View style={statsStyles.textCentered}>
                     <View>
                       <Text style={statsStyles.surfaceText}>
-                        {mode.substring(0, 4) != "solo" ? "Revives:" : "Days:"}
+                        Rounds Played:{" "}
                       </Text>
                     </View>
                     <View>
@@ -253,148 +358,78 @@ export default class LifetimeStats extends React.Component {
                         style={[statsStyles.surfaceText, { color: "#A0060F" }]}
                       >
                         {" "}
-                        {mode.substring(0, 4) != "solo" ? revives : days}
+                        {roundsPlayed}
                       </Text>
                     </View>
                   </View>
                 </Surface>
               </View>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
+            </FadeInView>
+            <FadeInView duration={3850} value={1}>
+              <View>
+                <Surface style={statsStyles.surfaceLong}>
                   <View style={statsStyles.textCentered}>
                     <View>
-                      <Text style={statsStyles.surfaceText}>Suicides: </Text>
+                      <Text style={statsStyles.surfaceText}>
+                        Headshot Kills:{" "}
+                      </Text>
                     </View>
                     <View>
                       <Text
                         style={[statsStyles.surfaceText, { color: "#A0060F" }]}
                       >
                         {" "}
-                        {suicides}
+                        {headshotKills}
                       </Text>
                     </View>
                   </View>
                 </Surface>
               </View>
-            </View>
-          </FadeInView>
-          <FadeInView duration={2850} value={1}>
-            <View style={statsStyles.row}>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
+            </FadeInView>
+            <FadeInView duration={4450} value={1}>
+              <View>
+                <Surface style={statsStyles.surfaceLong}>
                   <View style={statsStyles.textCentered}>
                     <View>
-                      <Text style={statsStyles.surfaceText}>Heals: </Text>
+                      <Text style={statsStyles.surfaceText}>
+                        Damage Dealt:{" "}
+                      </Text>
                     </View>
                     <View>
                       <Text
                         style={[statsStyles.surfaceText, { color: "#A0060F" }]}
                       >
                         {" "}
-                        {heals}
+                        {damageDealt}
                       </Text>
                     </View>
                   </View>
                 </Surface>
               </View>
-              <View style={statsStyles.surfaceContainer}>
-                <Surface style={statsStyles.surface}>
+            </FadeInView>
+            <FadeInView duration={4900} value={1}>
+              <View>
+                <Surface style={statsStyles.surfaceLong}>
                   <View style={statsStyles.textCentered}>
                     <View>
-                      <Text style={statsStyles.surfaceText}>Boosts: </Text>
+                      <Text style={statsStyles.surfaceText}>
+                        Longest Kill:{" "}
+                      </Text>
                     </View>
                     <View>
                       <Text
                         style={[statsStyles.surfaceText, { color: "#A0060F" }]}
                       >
                         {" "}
-                        {boosts}
+                        {longestKill}
                       </Text>
                     </View>
                   </View>
                 </Surface>
               </View>
-            </View>
-          </FadeInView>
-          <FadeInView duration={3350} value={1}>
-            <View>
-              <Surface style={statsStyles.surfaceLong}>
-                <View style={statsStyles.textCentered}>
-                  <View>
-                    <Text style={statsStyles.surfaceText}>Rounds Played: </Text>
-                  </View>
-                  <View>
-                    <Text
-                      style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                    >
-                      {" "}
-                      {roundsPlayed}
-                    </Text>
-                  </View>
-                </View>
-              </Surface>
-            </View>
-          </FadeInView>
-          <FadeInView duration={3850} value={1}>
-            <View>
-              <Surface style={statsStyles.surfaceLong}>
-                <View style={statsStyles.textCentered}>
-                  <View>
-                    <Text style={statsStyles.surfaceText}>
-                      Headshot Kills:{" "}
-                    </Text>
-                  </View>
-                  <View>
-                    <Text
-                      style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                    >
-                      {" "}
-                      {headshotKills}
-                    </Text>
-                  </View>
-                </View>
-              </Surface>
-            </View>
-          </FadeInView>
-          <FadeInView duration={4450} value={1}>
-            <View>
-              <Surface style={statsStyles.surfaceLong}>
-                <View style={statsStyles.textCentered}>
-                  <View>
-                    <Text style={statsStyles.surfaceText}>Damage Dealt: </Text>
-                  </View>
-                  <View>
-                    <Text
-                      style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                    >
-                      {" "}
-                      {damageDealt}
-                    </Text>
-                  </View>
-                </View>
-              </Surface>
-            </View>
-          </FadeInView>
-          <FadeInView duration={4900} value={1}>
-            <View>
-              <Surface style={statsStyles.surfaceLong}>
-                <View style={statsStyles.textCentered}>
-                  <View>
-                    <Text style={statsStyles.surfaceText}>Longest Kill: </Text>
-                  </View>
-                  <View>
-                    <Text
-                      style={[statsStyles.surfaceText, { color: "#A0060F" }]}
-                    >
-                      {" "}
-                      {longestKill}
-                    </Text>
-                  </View>
-                </View>
-              </Surface>
-            </View>
-          </FadeInView>
-        </View>
+            </FadeInView>
+          </View>
+        </ScrollView>
       </View>
     );
   };
