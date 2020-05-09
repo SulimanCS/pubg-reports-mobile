@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StatusBar, StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import Svg, { Path } from "react-native-svg";
 import * as SecureStore from "expo-secure-store";
@@ -116,6 +116,7 @@ export default class HomeScreen extends React.Component {
     const { navigation } = this.props;
     return this.state.fontLoaded ? (
       <View style={styles.container}>
+        <StatusBar barStyle="dark-content" />
         <Text style={styles.titleText}>PUBG Reports</Text>
         <View style={styles.row}>
           <View style={styles.margins}>
