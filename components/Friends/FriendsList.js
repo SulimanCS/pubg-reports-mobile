@@ -100,11 +100,8 @@ export default class Friends extends React.Component {
     const lastAddedFriendID = parseInt(
       await SecureStore.getItemAsync(lastAddedFriendIDKey)
     );
-    console.log(lastAddedFriendID);
     if (lastAddedFriendID == null) return;
-    console.log("for oo");
     for (let i = 1; i < lastAddedFriendID + 1; i++) {
-      console.log(i);
       const friendGameIDKey = "Friend" + i + "gameID";
       const friendAccountIDKey = "Friend" + i + "accountID";
       const friendPlatformKey = "Friend" + i + "platform";
@@ -120,7 +117,7 @@ export default class Friends extends React.Component {
       };
       this.state.friends.push(frinedObject);
     }
-    console.log(this.state.friends);
+    // console.log(this.state.friends);
   };
 
   surfaceColor = (platform) => {
@@ -161,7 +158,6 @@ export default class Friends extends React.Component {
   };
 
   renderFriends = (friend, index) => {
-    this.surfaceColor(friend["platform"]);
     return (
       <View key={index}>
         <Surface
