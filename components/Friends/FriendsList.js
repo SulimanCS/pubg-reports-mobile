@@ -159,12 +159,15 @@ export default class Friends extends React.Component {
   };
 
   renderFriends = (friend, index) => {
+    const { navigation } = this.props;
     return (
       <View key={index}>
         <Surface
           style={[styles.surfaceLong, this.surfaceColor(friend["platform"])]}
         >
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Friend", { profile: friend })}
+          >
             <View style={styles.textCentered}>
               <View>
                 <Text
