@@ -11,6 +11,18 @@ export default class Friend extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>FRIEND: {" " + profile.gameID}</Text>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <Button mode="contained" color="#000">
+              <Text style={styles.buttonText}>Remove</Text>
+            </Button>
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button mode="contained" color="#000">
+              <Text style={styles.buttonText}>Lifetime Stats</Text>
+            </Button>
+          </View>
+        </View>
       </View>
     );
   }
