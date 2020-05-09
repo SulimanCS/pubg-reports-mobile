@@ -42,6 +42,7 @@ export default class Friend extends React.Component {
                   ID: profile.gameID,
                   longID: profile.accountID,
                   platform: profile.platform,
+                  fromFriends: true,
                 })
               }
             >

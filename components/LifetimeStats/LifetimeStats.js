@@ -117,6 +117,15 @@ export default class LifetimeStats extends React.Component {
     }, 2550);
   };
 
+  titleText = () => {
+    let fromFriends = this.props.route.params.fromFriends;
+    return (
+      <Text style={styles.titleText}>
+        {fromFriends ? "FRIEND:  " : null}
+        {this.state.ID}
+      </Text>
+    );
+  };
   Mode = () => {
     let mode = this.state.secondChoice;
     this.state.firstChoice != "tpp"
@@ -151,7 +160,7 @@ export default class LifetimeStats extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>{this.state.ID}</Text>
+        <this.titleText />
         <View style={statsStyles.optionsContainer}>
           <FadeInView duration={1450} value={1}>
             <View style={statsStyles.row}>
@@ -393,7 +402,7 @@ export default class LifetimeStats extends React.Component {
   render() {
     return this.state.firstChoiceScreen ? (
       <View style={styles.container}>
-        <Text style={styles.titleText}>{this.state.ID}</Text>
+        <this.titleText />
         <FadeInView duration={1450} value={1}>
           <View style={firstScreenStyles.optionsContainer}>
             <View>
@@ -424,7 +433,7 @@ export default class LifetimeStats extends React.Component {
       </View>
     ) : !this.state.secondChoiceScreen ? (
       <View style={styles.container}>
-        <Text style={styles.titleText}>{this.state.ID}</Text>
+        <this.titleText />
         <FadeOutView duration={1450} value={0}>
           <View style={firstScreenStyles.optionsContainer}>
             <View>
@@ -447,7 +456,7 @@ export default class LifetimeStats extends React.Component {
       </View>
     ) : !this.state.secondChoice ? (
       <View style={styles.container}>
-        <Text style={styles.titleText}>{this.state.ID}</Text>
+        <this.titleText />
         <View style={secondScreenStyles.optionsContainer}>
           <TouchableOpacity
             onPress={() => this.handleClickSecondScreen("solo")}
@@ -484,7 +493,7 @@ export default class LifetimeStats extends React.Component {
       </View>
     ) : !this.state.lifetmeStatsScreen ? (
       <View style={styles.container}>
-        <Text style={styles.titleText}>{this.state.ID}</Text>
+        <this.titleText />
         <View style={secondScreenStyles.optionsContainer}>
           <FadeOutView duration={1450} value={0}>
             <View>
