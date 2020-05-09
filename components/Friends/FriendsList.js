@@ -111,6 +111,7 @@ export default class Friends extends React.Component {
       const platform = await SecureStore.getItemAsync(friendPlatformKey);
 
       const frinedObject = {
+        localStorageID: i,
         gameID: gameID,
         accountID: accountID,
         platform: platform,
