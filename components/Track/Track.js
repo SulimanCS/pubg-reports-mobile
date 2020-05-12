@@ -6,7 +6,7 @@ export default class Track extends React.Component {
   state = {
     ID: this.props.route.params.ID,
     accountID: this.props.route.params.longID,
-    platform: "temp",
+    platform: this.props.route.params.platform,
   };
   componentDidMount() {}
 

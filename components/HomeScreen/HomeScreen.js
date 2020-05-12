@@ -94,10 +94,12 @@ export default class HomeScreen extends React.Component {
     });
     let ID = await SecureStore.getItemAsync("gameID");
     let longID = await SecureStore.getItemAsync("accountID");
+    let platform = await SecureStore.getItemAsync("accountPlatform");
     this.setState({
       fontLoaded: true,
       gameID: ID,
       accountID: longID,
+      platform: platform,
     });
   }
 
@@ -119,6 +121,7 @@ export default class HomeScreen extends React.Component {
       ? navigation.navigate("Track", {
           ID: this.state.gameID,
           longID: this.state.accountID,
+          platform: this.state.platform,
         })
       : alert("Please link a valid PUBG ID in the PUBG ID page");
   };
