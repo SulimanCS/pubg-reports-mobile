@@ -92,10 +92,12 @@ export default class HomeScreen extends React.Component {
       "ACR": require("../../assets/fonts/AsapCondensed-Regular.ttf"),
       "ACB": require("../../assets/fonts/AsapCondensed-Bold.ttf"),
     });
-    ID = await SecureStore.getItemAsync("gameID");
+    let ID = await SecureStore.getItemAsync("gameID");
+    let longID = await SecureStore.getItemAsync("accountID");
     this.setState({
       fontLoaded: true,
       gameID: ID,
+      accountID: longID,
     });
   }
 
@@ -114,7 +116,10 @@ export default class HomeScreen extends React.Component {
   navigateToTrack = () => {
     const { navigation } = this.props;
     this.state.gameID
-      ? navigation.navigate("Track")
+      ? navigation.navigate("Track", {
+          ID: this.state.gameID,
+          longID: this.state.accountID,
+        })
       : alert("Please link a valid PUBG ID in the PUBG ID page");
   };
 
