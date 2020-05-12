@@ -13,7 +13,10 @@ export default class Track extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.titleText}>Track</Text>
+        <Text style={styles.titleText}>
+          Tracking:{" "}
+          {" " + this.state.ID + " " + "(" + this.state.platform + ")"}
+        </Text>
       </View>
     );
   }
