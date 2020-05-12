@@ -9,6 +9,7 @@ import Friends from "./components/Friends/Friends";
 import AddFriend from "./components/Friends/AddFriend";
 import FriendsList from "./components/Friends/FriendsList";
 import Friend from "./components/Friends/Friend";
+import Track from "./components/Track/Track";
 
 const Stack = createStackNavigator();
 
@@ -67,6 +68,12 @@ export default class App extends React.Component {
           <Stack.Screen
             name="Friend"
             component={Friend}
+            options={removeHeader}
+          />
+          {/* prettier-ignore */}
+          <Stack.Screen
+            name="Track"
+            component={Track}
             options={removeHeader}
           />
         </Stack.Navigator>
