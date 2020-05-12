@@ -114,7 +114,7 @@ export default class HomeScreen extends React.Component {
   navigateToTrack = () => {
     const { navigation } = this.props;
     this.state.gameID
-      ? navigation.navigate("placeholder")
+      ? navigation.navigate("Track")
       : alert("Please link a valid PUBG ID in the PUBG ID page");
   };
 

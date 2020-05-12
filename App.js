@@ -17,14 +17,6 @@ const removeHeader = () => ({
   headerShown: false,
 });
 
-const placeholder = () => {
-  return (
-    <View>
-      <Text>placeholder</Text>
-    </View>
-  );
-};
-
 export default class App extends React.Component {
   render() {
     return (
@@ -33,11 +25,6 @@ export default class App extends React.Component {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={removeHeader}
-          />
-          <Stack.Screen
-            name="placeholder"
-            component={placeholder}
             options={removeHeader}
           />
           <Stack.Screen
