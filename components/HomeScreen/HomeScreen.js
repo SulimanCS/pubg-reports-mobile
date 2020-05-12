@@ -111,8 +111,12 @@ export default class HomeScreen extends React.Component {
     );
   };
 
-  setGameIDCallback = (passedGameID) => {
-    this.setState({ gameID: passedGameID });
+  setGameIDCallback = (passedGameID, passedAccountID, passedPlatform) => {
+    this.setState({
+      gameID: passedGameID,
+      accountID: passedAccountID,
+      platform: passedPlatform,
+    });
   };
 
   navigateToTrack = () => {

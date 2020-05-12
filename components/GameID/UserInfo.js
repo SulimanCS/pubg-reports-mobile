@@ -27,7 +27,7 @@ export default class UserInfo extends React.Component {
     SecureStore.deleteItemAsync("gameID");
     SecureStore.deleteItemAsync("accountID");
     SecureStore.deleteItemAsync("accountPlatform");
-    this.props.callback(null);
+    this.props.callback(null, null, null);
   };
 
   unlinkID = () => {

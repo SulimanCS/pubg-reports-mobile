@@ -107,7 +107,7 @@ export default class GameID extends React.Component {
       ? (SecureStore.setItemAsync("gameID", this.state.gameID),
         SecureStore.setItemAsync("accountID", this.state.accountID),
         SecureStore.setItemAsync("accountPlatform", this.state.platform),
-        callback(this.state.gameID))
+        callback(this.state.gameID, this.state.accountID, this.state.platform))
       : alert("Invalid PUBG ID");
   };
 
