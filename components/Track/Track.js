@@ -3,6 +3,28 @@ import { StyleSheet, Text, View, Animated } from "react-native";
 import { Surface } from "react-native-paper";
 import styles from "./TrackStyles";
 
+const FadeInView = (props) => {
+  const [fadeAnim] = useState(new Animated.Value(0)); // Initial value for opacity: 0
+
+  React.useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: props.value,
+      duration: props.duration,
+    }).start();
+  }, []);
+
+  return (
+    <Animated.View // Special animatable View
+      style={{
+        ...props.style,
+        opacity: fadeAnim, // Bind opacity to animated value
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+};
+
 export default class Track extends React.Component {
   state = {
     ID: this.props.route.params.ID,
