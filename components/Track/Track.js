@@ -211,12 +211,20 @@ export default class Track extends React.Component {
         <View style={styles.optionsContainer}>
           <this.generateSuface
             title="Rounds Played: "
-            data="temp"
+            data={this.state.roundsPlayed}
             short={false}
           />
           <View style={styles.row}>
-            <this.generateSuface title="Kills: " data="temp" short={true} />
-            <this.generateSuface title="Wins : " data="temp" short={true} />
+            <this.generateSuface
+              title="Kills: "
+              data={this.state.kills}
+              short={true}
+            />
+            <this.generateSuface
+              title="Wins : "
+              data={this.state.wins}
+              short={true}
+            />
           </View>
         </View>
         <Text style={[styles.titleText, styles.sectionTextMargin]}>
