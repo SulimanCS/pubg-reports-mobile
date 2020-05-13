@@ -3,6 +3,24 @@ import { StyleSheet, Text, View, Animated } from "react-native";
 import { Surface } from "react-native-paper";
 import styles from "./TrackStyles";
 
+function StopIcon(props) {
+  return (
+    <Svg
+      aria-hidden="true"
+      data-prefix="fas"
+      data-icon="stop"
+      className="prefix__svg-inline--fa prefix__fa-stop prefix__fa-w-14"
+      viewBox="0 0 448 512"
+      {...props}
+    >
+      <Path
+        fill="currentColor"
+        d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"
+      />
+    </Svg>
+  );
+}
+
 const FadeInView = (props) => {
   const [fadeAnim] = useState(new Animated.Value(0)); // Initial value for opacity: 0
 
