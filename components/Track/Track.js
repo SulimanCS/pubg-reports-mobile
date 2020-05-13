@@ -59,6 +59,7 @@ export default class Track extends React.Component {
 
   render() {
     return (
+      // <FadeInView duration={1450} value={1}></FadeInView>
       <View style={styles.container}>
         <Text style={styles.titleText}>
           Tracking:{" "}
@@ -68,20 +69,29 @@ export default class Track extends React.Component {
           Session stats
         </Text>
         <View style={styles.optionsContainer}>
-          <FadeInView duration={1450} value={1}>
-            <this.generateSuface
-              title="Rounds Played: "
-              data="temp"
-              short={false}
-            />
-          </FadeInView>
-          <FadeInView duration={1450} value={1}>
-            <View style={styles.row}>
-              <this.generateSuface title="Wins: " data="temp" short={true} />
-              <this.generateSuface title="Wins : " data="temp" short={true} />
-            </View>
-          </FadeInView>
+          <this.generateSuface
+            title="Rounds Played: "
+            data="temp"
+            short={false}
+          />
+          <View style={styles.row}>
+            <this.generateSuface title="Wins: " data="temp" short={true} />
+            <this.generateSuface title="Wins : " data="temp" short={true} />
+          </View>
         </View>
+        <Text style={[styles.titleText, styles.sectionTextMargin]}>
+          Options
+        </Text>
+        <this.generateSuface
+          title="Stop Tracking: "
+          data="temp"
+          short={false}
+        />
+        <this.generateSuface
+          title="View Game Reports: "
+          data="temp"
+          short={false}
+        />
       </View>
     );
   }
