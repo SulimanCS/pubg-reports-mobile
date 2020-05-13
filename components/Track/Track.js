@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Svg, { Path } from "react-native-svg";
 import { Surface } from "react-native-paper";
+import TOKEN from "../../TOKEN";
 import styles from "./TrackStyles";
 
 function StopIcon(props) {
@@ -76,6 +77,39 @@ export default class Track extends React.Component {
     roundsPlayed: 0,
     wins: 0,
     kills: 0,
+    test: null,
+    lastGameID: null,
+  };
+
+  async componentDidMount() {
+    await this.getLastGame();
+  }
+
+  getLastGame = async () => {
+    // prettier-ignore
+    const url =
+      `https://api.pubg.com/shards/${this.state.platform}/players?filter[playerNames]=${this.state.ID}`;
+    let options = {
+      headers: {
+        "Authorization": "Bearer " + TOKEN,
+        "Accept": "application/vnd.api+json",
+      },
+    };
+
+    const response = await fetch(url, options);
+    const profile = await response.json();
+    const lastGame = profile["data"][0]["relationships"]["matches"]["data"][0];
+    if (lastGame === undefined) {
+      this.setState({
+        lastGameID: null,
+      });
+    } else {
+      this.setState({
+        lastGameID: typeof lastGame["id"] === "string" ? lastGame["id"] : null,
+      });
+    }
+  };
+
   };
 
   generateSuface = (options) => {
