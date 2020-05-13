@@ -86,6 +86,7 @@ export default class Track extends React.Component {
     kills: 0,
     test: null,
     lastGameID: null,
+    lastGameObj: null,
   };
 
   async componentDidMount() {
@@ -111,6 +112,13 @@ export default class Track extends React.Component {
     }
   };
 
+  getMatch = async (matchID, platform) => {
+    // prettier-ignore
+    const url =
+      `https://api.pubg.com/shards/${platform}/matches/${matchID}`;
+    const response = await fetch(url, fetchOptions);
+    const game = await response.json();
+    this.setState({ lastGameObj: game });
   };
 
   generateSuface = (options) => {
