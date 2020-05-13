@@ -84,13 +84,19 @@ export default class Track extends React.Component {
     roundsPlayed: 0,
     wins: 0,
     kills: 0,
-    test: null,
+    update: null,
     lastGameID: null,
     lastGameObj: null,
   };
 
   async componentDidMount() {
     await this.getLastGameID();
+    // console.log(this.state);
+    this.state.update = setInterval(this.updateStats, 15000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.update);
   }
 
   getLastGameID = async () => {
