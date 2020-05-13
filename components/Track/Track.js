@@ -121,6 +121,33 @@ export default class Track extends React.Component {
     this.setState({ lastGameObj: game });
   };
 
+  getPlayerStatsFromMatch = (matchObj) => {
+    const players = matchObj["included"];
+    let kills = 0;
+    let roundPlayed = 0;
+    let wins = 0;
+    players.forEach((element) => {
+      const attributes = element["attributes"];
+      if (attributes.hasOwnProperty("stats")) {
+        const stats = attributes["stats"];
+        if (stats.hasOwnProperty("name")) {
+          if (stats["name"] == this.state.ID) {
+            roundPlayed += 1;
+            kills += stats["kills"];
+            if (stats["winPlace"] === 1) {
+              wins += 1;
+            }
+          }
+        }
+      }
+    });
+    return {
+      "roundPlayed": roundPlayed,
+      "wins": wins,
+      "kills": kills,
+    };
+  };
+
   generateSuface = (options) => {
     const type = options.short ? styles.surface : styles.surfaceLong;
     const container = options.short ? styles.surfaceContainer : null;
