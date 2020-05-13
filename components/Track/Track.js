@@ -112,6 +112,29 @@ export default class Track extends React.Component {
     }
   };
 
+  updateStats = async () => {
+    let lastGameID = this.state.lastGameID;
+    await this.getLastGameID();
+    if (lastGameID !== this.state.lastGameID) {
+      console.log("NEW GAME FOUND");
+      console.log("old= " + lastGameID);
+      console.log("new= " + this.state.lastGameID);
+      await this.getMatch(this.state.lastGameID, this.state.platform);
+      let results = this.getPlayerStatsFromMatch(this.state.lastGameObj);
+      if (results["roundPlayed"]) {
+        this.setState({
+          roundsPlayed: this.state.roundsPlayed + results["roundPlayed"],
+        });
+        if (results["wins"]) {
+          this.setState({ wins: this.state.wins + results["wins"] });
+        }
+        if (results["kills"]) {
+          this.setState({ kills: this.state.kills + results["kills"] });
+        }
+      }
+    }
+  };
+
   getMatch = async (matchID, platform) => {
     // prettier-ignore
     const url =
