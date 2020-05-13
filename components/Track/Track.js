@@ -153,6 +153,12 @@ export default class Track extends React.Component {
           Options
         </Text>
         <this.generateOptionSuface
+          title="View Game Reports"
+          nav={() => navigation.navigate("Home")}
+          icon={ReportIcon}
+          iconColor="#000"
+        />
+        <this.generateOptionSuface
           title="Stop Tracking"
           nav={() => navigation.navigate("Home")}
           icon={StopIcon}
