@@ -145,7 +145,7 @@ export default class Track extends React.Component {
             short={false}
           />
           <View style={styles.row}>
-            <this.generateSuface title="Wins: " data="temp" short={true} />
+            <this.generateSuface title="Kills: " data="temp" short={true} />
             <this.generateSuface title="Wins : " data="temp" short={true} />
           </View>
         </View>
