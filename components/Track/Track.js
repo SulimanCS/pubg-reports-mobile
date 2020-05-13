@@ -13,8 +13,27 @@ export default class Track extends React.Component {
     kills: 0,
   };
 
+  generateSuface = (options) => {
+    const type = options.short ? styles.surface : styles.surfaceLong;
+    const container = options.short ? styles.surfaceContainer : null;
+    return (
+      <View style={container}>
+        <Surface style={type}>
+          <View style={styles.textCentered}>
+            <View>
+              <Text style={styles.surfaceText}>{options.title}</Text>
+            </View>
+            <View>
+              <Text style={[styles.surfaceText, { color: "#A0060F" }]}>
+                {" "}
+                {options.data}
+              </Text>
+            </View>
+          </View>
+        </Surface>
+      </View>
+    );
   };
-  componentDidMount() {}
 
   render() {
     return (
@@ -28,54 +47,16 @@ export default class Track extends React.Component {
         </Text>
         <View style={styles.optionsContainer}>
           <FadeInView duration={1450} value={1}>
-            <View>
-              <Surface style={styles.surfaceLong}>
-                <View style={styles.textCentered}>
-                  <View>
-                    <Text style={styles.surfaceText}>Rounds Played: </Text>
-                  </View>
-                  <View>
-                    <Text style={[styles.surfaceText, { color: "#A0060F" }]}>
-                      {" "}
-                      {"temp"}
-                    </Text>
-                  </View>
-                </View>
-              </Surface>
-            </View>
+            <this.generateSuface
+              title="Rounds Played: "
+              data="temp"
+              short={false}
+            />
           </FadeInView>
           <FadeInView duration={1450} value={1}>
             <View style={styles.row}>
-              <View style={styles.surfaceContainer}>
-                <Surface style={styles.surface}>
-                  <View style={styles.textCentered}>
-                    <View>
-                      <Text style={styles.surfaceText}>Kills: </Text>
-                    </View>
-                    <View>
-                      <Text style={[styles.surfaceText, { color: "#A0060F" }]}>
-                        {" "}
-                        {"temp"}
-                      </Text>
-                    </View>
-                  </View>
-                </Surface>
-              </View>
-              <View style={styles.surfaceContainer}>
-                <Surface style={styles.surface}>
-                  <View style={styles.textCentered}>
-                    <View>
-                      <Text style={styles.surfaceText}>Assists: </Text>
-                    </View>
-                    <View>
-                      <Text style={[styles.surfaceText, { color: "#A0060F" }]}>
-                        {" "}
-                        {"temp"}
-                      </Text>
-                    </View>
-                  </View>
-                </Surface>
-              </View>
+              <this.generateSuface title="Wins: " data="temp" short={true} />
+              <this.generateSuface title="Wins : " data="temp" short={true} />
             </View>
           </FadeInView>
         </View>
