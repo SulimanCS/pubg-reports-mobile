@@ -89,10 +89,10 @@ export default class Track extends React.Component {
   };
 
   async componentDidMount() {
-    await this.getLastGame();
+    await this.getLastGameID();
   }
 
-  getLastGame = async () => {
+  getLastGameID = async () => {
     // prettier-ignore
     const url =
       `https://api.pubg.com/shards/${this.state.platform}/players?filter[playerNames]=${this.state.ID}`;
