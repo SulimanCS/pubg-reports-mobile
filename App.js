@@ -13,9 +13,13 @@ import Track from "./components/Track/Track";
 
 const Stack = createStackNavigator();
 
-const removeHeader = () => ({
+const removeHeader = {
   headerShown: false,
-});
+};
+
+const disableSwipeBack = {
+  gestureEnabled: false,
+};
 
 export default class App extends React.Component {
   render() {
@@ -62,6 +66,7 @@ export default class App extends React.Component {
             name="Track"
             component={Track}
             options={removeHeader}
+            options={{ ...removeHeader, ...disableSwipeBack }}
           />
         </Stack.Navigator>
       </NavigationContainer>
