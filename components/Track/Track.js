@@ -109,6 +109,7 @@ export default class Track extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
     return (
       // <FadeInView duration={1450} value={1}></FadeInView>
       <View style={styles.container}>
@@ -133,15 +134,11 @@ export default class Track extends React.Component {
         <Text style={[styles.titleText, styles.sectionTextMargin]}>
           Options
         </Text>
-        <this.generateSuface
-          title="Stop Tracking: "
-          data="temp"
-          short={false}
-        />
-        <this.generateSuface
-          title="View Game Reports: "
-          data="temp"
-          short={false}
+        <this.generateOptionSuface
+          title="Stop Tracking"
+          nav={() => navigation.navigate("Home")}
+          icon={StopIcon}
+          iconColor="#A0060F"
         />
       </View>
     );
