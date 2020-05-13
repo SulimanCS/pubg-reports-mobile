@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Animated } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
+import Svg, { Path } from "react-native-svg";
 import { Surface } from "react-native-paper";
 import styles from "./TrackStyles";
 
@@ -70,6 +77,32 @@ export default class Track extends React.Component {
               </Text>
             </View>
           </View>
+        </Surface>
+      </View>
+    );
+  };
+
+  generateOptionSuface = (options) => {
+    // const Icon = (options.StopIcon}
+    return (
+      <View>
+        <Surface style={[styles.surfaceLong]}>
+          <TouchableOpacity onPress={options.nav}>
+            <View
+              style={[styles.textCentered, { justifyContent: "space-between" }]}
+            >
+              <View>
+                <Text style={[styles.surfaceText, { marginLeft: 10 }]}>
+                  {options.title}
+                </Text>
+              </View>
+              <View>
+                <options.icon
+                  style={[styles.icon, { color: options.iconColor }]}
+                />
+              </View>
+            </View>
+          </TouchableOpacity>
         </Surface>
       </View>
     );

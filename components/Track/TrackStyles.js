@@ -65,6 +65,12 @@ const styles = StyleSheet.create({
     elevation: 4,
     borderRadius: 15,
   },
+  icon: {
+    color: "#000",
+    width: 30,
+    height: 30,
+    marginRight: 13.5,
+  },
 });
 
 export default styles;
