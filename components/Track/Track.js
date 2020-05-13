@@ -11,6 +11,13 @@ import { Surface } from "react-native-paper";
 import TOKEN from "../../TOKEN";
 import styles from "./TrackStyles";
 
+const fetchOptions = {
+  headers: {
+    "Authorization": "Bearer " + TOKEN,
+    "Accept": "application/vnd.api+json",
+  },
+};
+
 function StopIcon(props) {
   return (
     <Svg
@@ -89,14 +96,8 @@ export default class Track extends React.Component {
     // prettier-ignore
     const url =
       `https://api.pubg.com/shards/${this.state.platform}/players?filter[playerNames]=${this.state.ID}`;
-    let options = {
-      headers: {
-        "Authorization": "Bearer " + TOKEN,
-        "Accept": "application/vnd.api+json",
-      },
-    };
 
-    const response = await fetch(url, options);
+    const response = await fetch(url, fetchOptions);
     const profile = await response.json();
     const lastGame = profile["data"][0]["relationships"]["matches"]["data"][0];
     if (lastGame === undefined) {
