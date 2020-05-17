@@ -269,6 +269,7 @@ export default class Track extends React.Component {
             navigation.navigate("Games", {
               ID: this.state.ID,
               platform: this.state.platform,
+              games: this.state.games,
             })
           }
           icon={ReportIcon}
