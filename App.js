@@ -10,6 +10,7 @@ import AddFriend from "./components/Friends/AddFriend";
 import FriendsList from "./components/Friends/FriendsList";
 import Friend from "./components/Friends/Friend";
 import Track from "./components/Track/Track";
+import Games from "./components/Track/Games";
 
 const Stack = createStackNavigator();
 
@@ -65,9 +66,9 @@ export default class App extends React.Component {
           <Stack.Screen
             name="Track"
             component={Track}
-            options={removeHeader}
             options={{ ...removeHeader, ...disableSwipeBack }}
           />
+          <Stack.Screen name="Games" component={Games} options={removeHeader} />
         </Stack.Navigator>
       </NavigationContainer>
     );
