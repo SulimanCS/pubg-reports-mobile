@@ -265,7 +265,12 @@ export default class Track extends React.Component {
         </Text>
         <this.generateOptionSuface
           title="View Game Reports"
-          nav={() => navigation.navigate("Home")}
+          nav={() =>
+            navigation.navigate("Games", {
+              ID: this.state.ID,
+              platform: this.state.platform,
+            })
+          }
           icon={ReportIcon}
           iconColor="#000"
         />
