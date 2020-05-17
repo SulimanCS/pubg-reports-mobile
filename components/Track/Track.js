@@ -150,7 +150,7 @@ export default class Track extends React.Component {
     const game = await response.json();
     this.setState({
       lastGameObj: game,
-      games: [...this.state.games, game],
+      games: [game, ...this.state.games],
     });
   };
 
