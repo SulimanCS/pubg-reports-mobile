@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Surface } from "react-native-paper";
 import styles from "./TrackStyles";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 export default class Games extends React.Component {
   state = {
@@ -29,8 +29,8 @@ export default class Games extends React.Component {
     const color = options.rank === 1 ? wonColor : lostColor;
 
     return (
-      <View>
-        <Surface style={[styles.surfaceLong, background]}>
+      <Surface style={[styles.surfaceLong, background]}>
+        <TouchableOpacity>
           <View
             style={[styles.textCentered, { justifyContent: "space-between" }]}
           >
@@ -49,8 +49,8 @@ export default class Games extends React.Component {
               <Text style={[styles.surfaceText, color]}>{title}</Text>
             </View>
           </View>
-        </Surface>
-      </View>
+        </TouchableOpacity>
+      </Surface>
     );
   };
 
@@ -85,7 +85,7 @@ export default class Games extends React.Component {
           Tracking:{" "}
           {" " + this.state.ID + " " + "(" + this.state.platform + ")"}
         </Text>
-        <ScrollView>
+        <ScrollView style={{ width: "100%" }}>
           <View style={styles.optionsContainer}>
             {this.state.games.map(this.rednerGames)}
           </View>
