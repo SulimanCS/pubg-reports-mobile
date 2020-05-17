@@ -87,6 +87,7 @@ export default class Track extends React.Component {
     update: null,
     lastGameID: null,
     lastGameObj: null,
+    games: [],
   };
 
   async componentDidMount() {
@@ -147,7 +148,10 @@ export default class Track extends React.Component {
       `https://api.pubg.com/shards/${platform}/matches/${matchID}`;
     const response = await fetch(url, fetchOptions);
     const game = await response.json();
-    this.setState({ lastGameObj: game });
+    this.setState({
+      lastGameObj: game,
+      games: [...this.state.games, game],
+    });
   };
 
   getPlayerStatsFromMatch = (matchObj) => {
