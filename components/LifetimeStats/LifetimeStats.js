@@ -514,7 +514,7 @@ export default class LifetimeStats extends React.Component {
             </FadeInView>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => this.handleClickSecondScreen("squads")}
+            onPress={() => this.handleClickSecondScreen("squad")}
           >
             <FadeInView duration={2250} value={1}>
               <View>
