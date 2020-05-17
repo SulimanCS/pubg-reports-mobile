@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Surface } from "react-native-paper";
 import styles from "./TrackStyles";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default class Games extends React.Component {
   state = {
@@ -53,6 +54,28 @@ export default class Games extends React.Component {
     );
   };
 
+  rednerGames = (game, index) => {
+    const players = game["included"];
+    let rank = 100;
+    let playerStats = null;
+    players.forEach((element) => {
+      const attributes = element["attributes"];
+      if (attributes.hasOwnProperty("stats")) {
+        const stats = attributes["stats"];
+        if (stats.hasOwnProperty("name")) {
+          if (stats["name"] == this.state.ID) {
+            playerStats = stats;
+            rank = stats["winPlace"];
+          }
+        }
+      }
+    });
+    return (
+      <View key={index}>
+        <this.generateGameSuface rank={rank} />
+      </View>
+    );
+  };
 
   render() {
     const { navigation } = this.props;
@@ -62,6 +85,11 @@ export default class Games extends React.Component {
           Tracking:{" "}
           {" " + this.state.ID + " " + "(" + this.state.platform + ")"}
         </Text>
+        <ScrollView>
+          <View style={styles.optionsContainer}>
+            {this.state.games.map(this.rednerGames)}
+          </View>
+        </ScrollView>
       </View>
     );
   }
