@@ -79,24 +79,36 @@ export default class UserInfo extends React.Component {
         <Text style={styles.titleText}>{this.props.ID}</Text>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
-            <Button mode="contained" color="#000" onPress={this.unlinkID}>
-              <Text style={styles.buttonText}>Unlink</Text>
-            </Button>
+            <View>
+              <TouchableOpacity
+                onPress={this.unlinkID}
+                style={{ alignItems: "center" }}
+              >
+                <UnlinkIcon style={styles.unlinkIcon} />
+              </TouchableOpacity>
+              <View style={{ alignItems: "center" }}>
+                <Text style={styles.iconText}>Unlink</Text>
+              </View>
+            </View>
           </View>
           <View style={styles.buttonContainer}>
-            <Button
-              mode="contained"
-              color="#000"
-              onPress={() =>
-                navigation.navigate("LifetimeStats", {
-                  ID: this.props.ID,
-                  longID: this.props.longID,
-                  platform: this.props.platform,
-                })
-              }
-            >
-              <Text style={styles.buttonText}>Lifetime Stats</Text>
-            </Button>
+            <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("LifetimeStats", {
+                    ID: this.props.ID,
+                    longID: this.props.longID,
+                    platform: this.props.platform,
+                  });
+                }}
+                style={{ alignItems: "center" }}
+              >
+                <StatsIcon style={styles.statsIcon} />
+              </TouchableOpacity>
+              <View style={{ alignItems: "center" }}>
+                <Text style={styles.iconText}>Lifetime Stats</Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>
