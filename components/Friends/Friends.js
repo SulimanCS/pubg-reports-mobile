@@ -1,5 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import Svg, { Path } from "react-native-svg";
 import { Button } from "react-native-paper";
 import styles from "./FriendsStyles";
 
@@ -49,22 +50,30 @@ export default class Friends extends React.Component {
         <Text style={styles.titleText}>{ID}</Text>
         <View style={styles.buttonsContainer}>
           <View style={styles.buttonContainer}>
-            <Button
-              mode="contained"
-              color="#000"
-              onPress={() => navigation.navigate("AddFriend", { ID: ID })}
-            >
-              <Text style={styles.buttonText}>Add a friend</Text>
-            </Button>
+            <View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("AddFriend", { ID: ID })}
+                style={{ alignItems: "center" }}
+              >
+                <AddIcon style={styles.addIcon} />
+              </TouchableOpacity>
+              <View style={{ alignItems: "center" }}>
+                <Text style={styles.iconText}>Add a friend</Text>
+              </View>
+            </View>
           </View>
           <View style={styles.buttonContainer}>
-            <Button
-              mode="contained"
-              color="#000"
-              onPress={() => navigation.navigate("FriendsList", { ID: ID })}
-            >
-              <Text style={styles.buttonText}>Friends List</Text>
-            </Button>
+            <View>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("FriendsList", { ID: ID })}
+                style={{ alignItems: "center" }}
+              >
+                <FriendsIcon style={styles.friendsIcon} />
+              </TouchableOpacity>
+              <View style={{ alignItems: "center" }}>
+                <Text style={styles.iconText}>Friends list</Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>
