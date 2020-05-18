@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     marginTop: hp("5%"),
     fontFamily: "ACB",
     fontStyle: "normal",
-    fontWeight: "bold",
     lineHeight: 21,
     textTransform: "uppercase",
     color: "#A0060F",

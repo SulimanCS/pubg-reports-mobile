@@ -35,7 +35,6 @@ const statsStyles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "ACB",
     fontStyle: "normal",
-    fontWeight: "bold",
     textTransform: "uppercase",
     color: "#333",
   },
