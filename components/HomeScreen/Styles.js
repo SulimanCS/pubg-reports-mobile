@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   row: {
-    flex: 0.29,
+    height: 150,
     flexDirection: "row",
     marginTop: 76,
     right: 4.8,
