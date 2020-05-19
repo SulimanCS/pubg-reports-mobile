@@ -5,6 +5,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 import * as Font from "expo-font";
 import Svg, { Path } from "react-native-svg";
@@ -129,12 +130,12 @@ export default class HomeScreen extends React.Component {
         })
       : alert("Please link a valid PUBG ID in the PUBG ID page");
   };
-
   render() {
+    const barStyle = Platform.OS === "ios" ? "dark-content" : "light-content";
     const { navigation } = this.props;
     return this.state.fontLoaded ? (
       <View style={styles.container}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle={barStyle} />
         <Text style={styles.titleText}>PUBG Reports</Text>
         <View style={styles.row}>
           <View style={styles.margins}>
