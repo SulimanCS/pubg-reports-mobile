@@ -1,6 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import styles from "./TrackStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Surface } from "react-native-paper";
 import Svg, { Path } from "react-native-svg";
 
 function RanksIcon(props) {
@@ -53,6 +55,31 @@ export default class GameReport extends React.Component {
       platform: platform,
     });
   }
+
+  generateOptionSuface = (options) => {
+    return (
+      <View>
+        <Surface style={[styles.surfaceLong]}>
+          <TouchableOpacity onPress={options.nav}>
+            <View
+              style={[styles.textCentered, { justifyContent: "space-between" }]}
+            >
+              <View>
+                <Text style={[styles.surfaceText, { marginLeft: 10 }]}>
+                  {options.title}
+                </Text>
+              </View>
+              <View>
+                <options.icon
+                  style={[styles.icon, { color: options.iconColor }]}
+                />
+              </View>
+            </View>
+          </TouchableOpacity>
+        </Surface>
+      </View>
+    );
+  };
 
   render() {
     return (
