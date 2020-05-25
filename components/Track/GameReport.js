@@ -38,7 +38,22 @@ function characterIcon(props) {
     </Svg>
   );
 }
+
 export default class GameReport extends React.Component {
+  state = {
+    ID: null,
+    platform: null,
+  };
+
+  componentDidMount() {
+    const { ID } = this.props.route.params;
+    const { platform } = this.props.route.params;
+    this.setState({
+      ID: ID,
+      platform: platform,
+    });
+  }
+
   render() {
     return (
       <View
