@@ -82,11 +82,26 @@ export default class GameReport extends React.Component {
   };
 
   render() {
+    const { game } = this.props.route.params;
+    const { navigation } = this.props;
     return (
-      <View
-        style={[{ flex: 1, justifyContent: "center", alignItems: "center" }]}
-      >
-        <Text>Hello World</Text>
+      <View style={styles.container}>
+        <Text style={styles.titleText}>
+          Tracking:{" "}
+          {" " + this.state.ID + " " + "(" + this.state.platform + ")"}
+        </Text>
+        <this.generateOptionSuface
+          title="Your stats"
+          nav={() => navigation.navigate("Home")}
+          icon={characterIcon}
+          iconColor="#000"
+        />
+        <this.generateOptionSuface
+          title="Player ranks"
+          nav={() => navigation.navigate("Home")}
+          icon={RanksIcon}
+          iconColor="#000"
+        />
       </View>
     );
   }
