@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import styles from "./TrackStyles";
 import Svg, { Path } from "react-native-svg";
 
-function ranksIcon(props) {
+function RanksIcon(props) {
   return (
     <Svg
       aria-hidden="true"
