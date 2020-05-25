@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Surface } from "react-native-paper";
-import styles from "./TrackStyles";
+import styles from "./Styles";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 export default class Games extends React.Component {

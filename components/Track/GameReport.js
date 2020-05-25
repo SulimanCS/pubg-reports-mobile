@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import styles from "./TrackStyles";
+import styles from "./Styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Surface } from "react-native-paper";
 import Svg, { Path } from "react-native-svg";

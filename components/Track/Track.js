@@ -9,7 +9,7 @@ import {
 import Svg, { Path } from "react-native-svg";
 import { Surface } from "react-native-paper";
 import TOKEN from "../../TOKEN";
-import styles from "./TrackStyles";
+import styles from "./Styles";
 
 const fetchOptions = {
   headers: {
