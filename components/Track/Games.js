@@ -28,9 +28,19 @@ export default class Games extends React.Component {
     const title = options.rank === 1 ? "WON" : "LOST";
     const color = options.rank === 1 ? wonColor : lostColor;
 
+    const { navigation } = this.props;
+
     return (
       <Surface style={[styles.surfaceLong, background]}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("GameReport", {
+              ID: this.state.ID,
+              platform: this.state.platform,
+              game: options.game,
+            })
+          }
+        >
           <View
             style={[styles.textCentered, { justifyContent: "space-between" }]}
           >
@@ -72,7 +82,7 @@ export default class Games extends React.Component {
     });
     return (
       <View key={index}>
-        <this.generateGameSuface rank={rank} />
+        <this.generateGameSuface rank={rank} game={game} />
       </View>
     );
   };
