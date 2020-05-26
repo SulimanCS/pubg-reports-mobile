@@ -46,6 +46,7 @@ export default class GameReport extends React.Component {
     ID: null,
     platform: null,
     playerStats: null,
+    userStats: null,
   };
 
   componentDidMount() {
@@ -104,6 +105,23 @@ export default class GameReport extends React.Component {
       return a.winPlace - b.winPlace;
     });
     return playerStats;
+  };
+
+  fetchUserStats = (matchObj) => {
+    const players = matchObj["included"];
+    let userStats = null;
+    players.forEach((element) => {
+      const attributes = element["attributes"];
+      if (attributes.hasOwnProperty("stats")) {
+        const stats = attributes["stats"];
+        if (stats.hasOwnProperty("name")) {
+          if (stats["name"] == this.state.ID) {
+            userStats = stats;
+          }
+        }
+      }
+    });
+    return userStats;
   };
 
   navigateToRanks = () => {
