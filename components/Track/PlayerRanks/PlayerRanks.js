@@ -5,14 +5,12 @@ import { Surface } from "react-native-paper";
 import styles from "../Styles";
 
 export default class PlayerRanks extends React.Component {
-  state = {
-    playerStats: null,
-  };
-
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     const { playerStats } = this.props.route.params;
-    this.setState({playerStats: playerStats})
+    this.state = { playerStats: Array.isArray(playerStats) ? playerStats : [] };
   }
+
   generatePlayerSurface = (options) => {
     return (
       <Surface style={styles.surfaceLong}>
