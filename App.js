@@ -13,6 +13,7 @@ import Track from "./components/Track/Track";
 import Games from "./components/Track/Games";
 import GameReport from "./components/Track/GameReport";
 import PlayerRanks from "./components/Track/PlayerRanks/PlayerRanks";
+import PlayerGameStats from "./components/Track/PlayerGameStats/PlayerGameStats";
 
 const Stack = createStackNavigator();
 
@@ -79,6 +80,11 @@ export default class App extends React.Component {
           <Stack.Screen
             name="PlayerRanks"
             component={PlayerRanks}
+            options={removeHeader}
+          />
+          <Stack.Screen
+            name="PlayerGameStats"
+            component={PlayerGameStats}
             options={removeHeader}
           />
         </Stack.Navigator>
