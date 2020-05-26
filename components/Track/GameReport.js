@@ -95,7 +95,9 @@ export default class GameReport extends React.Component {
         }
       }
     });
-    this.setState({ playerStats: playerStats });
+    return playerStats;
+  };
+
   };
 
   navigateToRanks = () => {
