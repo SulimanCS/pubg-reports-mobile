@@ -108,8 +108,19 @@ export default class GameReport extends React.Component {
 
   navigateToRanks = () => {
     const { game } = this.props.route.params;
+    const { navigation } = this.props;
     if (this.state.playerStats == null) {
-      this.fetchPlayerRanks(game);
+      const playerStats = this.fetchPlayerRanks(game);
+      const sortedPlayerStats = this.sortByPlayerRanks(playerStats);
+      this.setState({ playerStats: sortedPlayerStats }, () => {
+        navigation.navigate("PlayerRanks", {
+          playerStats: sortedPlayerStats,
+        });
+      });
+    } else {
+      navigation.navigate("PlayerRanks", {
+        playerStats: this.state.playerStats,
+      });
     }
   };
 
