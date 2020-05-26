@@ -12,9 +12,16 @@ export default class PlayerRanks extends React.Component {
   }
 
   generatePlayerSurface = (options) => {
+    const { navigation } = this.props;
     return (
       <Surface style={styles.surfaceLong}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("PlayerGameStats", {
+              playerStats: options.stats,
+            });
+          }}
+        >
           <View
             style={[styles.textCentered, { justifyContent: "space-between" }]}
           >
@@ -48,6 +55,7 @@ export default class PlayerRanks extends React.Component {
           rank={player.winPlace}
           playerName={player.name}
           kills={player.kills}
+          stats={player}
         />
       </View>
     );
