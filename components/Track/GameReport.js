@@ -45,6 +45,7 @@ export default class GameReport extends React.Component {
   state = {
     ID: null,
     platform: null,
+    playerStats: null,
   };
 
   componentDidMount() {
@@ -81,8 +82,30 @@ export default class GameReport extends React.Component {
     );
   };
 
-  render() {
+  fetchPlayerRanks = (matchObj) => {
+    const players = matchObj["included"];
+    let playerStats = [];
+
+    players.forEach((element) => {
+      const attributes = element["attributes"];
+      if (attributes.hasOwnProperty("stats")) {
+        const stats = attributes["stats"];
+        if (stats.hasOwnProperty("name")) {
+          playerStats.push(stats);
+        }
+      }
+    });
+    this.setState({ playerStats: playerStats });
+  };
+
+  navigateToRanks = () => {
     const { game } = this.props.route.params;
+    if (this.state.playerStats == null) {
+      this.fetchPlayerRanks(game);
+    }
+  };
+
+  render() {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
@@ -98,7 +121,7 @@ export default class GameReport extends React.Component {
         />
         <this.generateOptionSuface
           title="Player ranks"
-          nav={() => navigation.navigate("Home")}
+          nav={this.navigateToRanks}
           icon={RanksIcon}
           iconColor="#000"
         />
