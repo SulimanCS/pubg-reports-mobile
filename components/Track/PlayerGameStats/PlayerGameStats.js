@@ -5,6 +5,26 @@ import { Surface } from "react-native-paper";
 import styles from "./PlayerGameStatsStyles";
 
 export default class PlayerGameStats extends React.Component {
+  generateStatSurface = (options) => {
+    return (
+      <View style={styles.surfaceContainer}>
+        <Surface style={styles.surface}>
+          <View style={styles.textCentered}>
+            <View>
+              <Text style={styles.surfaceText}>{options.title}: </Text>
+            </View>
+            <View>
+              <Text style={[styles.surfaceText, { color: "#A0060F" }]}>
+                {" "}
+                {options.data}
+              </Text>
+            </View>
+          </View>
+        </Surface>
+      </View>
+    );
+  };
+
   render() {
     return (
       <View style={styles.container}>
