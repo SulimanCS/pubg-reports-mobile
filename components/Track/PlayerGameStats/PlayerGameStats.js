@@ -29,7 +29,7 @@ export default class PlayerGameStats extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.titleText}>Player stats: {"temp"}</Text>
-        <ScrollView>
+        <ScrollView style={{ width: "95%" }}>
           <View style={styles.optionsContainer}>
             <View style={styles.row}></View>
           </View>
