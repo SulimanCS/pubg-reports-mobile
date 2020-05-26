@@ -142,6 +142,25 @@ export default class GameReport extends React.Component {
     }
   };
 
+  navigateToStats = () => {
+    const { game } = this.props.route.params;
+    const { navigation } = this.props;
+    if (this.state.userStats == null) {
+      const userStats = this.fetchUserStats(game);
+      if (userStats !== null) {
+        this.setState({ userStats: userStats }, () => {
+          navigation.navigate("PlayerGameStats", {
+            playerStats: userStats,
+          });
+        });
+      }
+    } else {
+      navigation.navigate("PlayerGameStats", {
+        playerStats: this.state.userStats,
+      });
+    }
+  };
+
   render() {
     const { navigation } = this.props;
     return (
@@ -152,7 +171,7 @@ export default class GameReport extends React.Component {
         </Text>
         <this.generateOptionSuface
           title="Your stats"
-          nav={() => navigation.navigate("Home")}
+          nav={this.navigateToStats}
           icon={characterIcon}
           iconColor="#000"
         />
