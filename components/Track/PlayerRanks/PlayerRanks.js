@@ -5,7 +5,14 @@ import { Surface } from "react-native-paper";
 import styles from "../Styles";
 
 export default class PlayerRanks extends React.Component {
-  state = {};
+  state = {
+    playerStats: null,
+  };
+
+  componentDidMount() {
+    const { playerStats } = this.props.route.params;
+    this.setState({playerStats: playerStats})
+  }
 
   render() {
     return (
