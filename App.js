@@ -12,6 +12,7 @@ import Friend from "./components/Friends/Friend";
 import Track from "./components/Track/Track";
 import Games from "./components/Track/Games";
 import GameReport from "./components/Track/GameReport";
+import PlayerRanks from "./components/Track/PlayerRanks/PlayerRanks";
 
 const Stack = createStackNavigator();
 
@@ -73,6 +74,11 @@ export default class App extends React.Component {
           <Stack.Screen
             name="GameReport"
             component={GameReport}
+            options={removeHeader}
+          />
+          <Stack.Screen
+            name="PlayerRanks"
+            component={PlayerRanks}
             options={removeHeader}
           />
         </Stack.Navigator>
