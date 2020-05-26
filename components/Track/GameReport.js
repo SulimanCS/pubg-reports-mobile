@@ -98,6 +98,12 @@ export default class GameReport extends React.Component {
     return playerStats;
   };
 
+  sortByPlayerRanks = (playerStats) => {
+    if (playerStats == null) return null;
+    playerStats.sort(function (a, b) {
+      return a.winPlace - b.winPlace;
+    });
+    return playerStats;
   };
 
   navigateToRanks = () => {
