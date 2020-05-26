@@ -6,9 +6,11 @@ import styles from "./PlayerGameStatsStyles";
 
 export default class PlayerGameStats extends React.Component {
   generateStatSurface = (options) => {
+    const container = options.short ? styles.surfaceContainer : null;
+    const type = options.short ? styles.surface : styles.surfaceLong;
     return (
-      <View style={styles.surfaceContainer}>
-        <Surface style={styles.surface}>
+      <View style={container}>
+        <Surface style={type}>
           <View style={styles.textCentered}>
             <View>
               <Text style={styles.surfaceText}>{options.title}: </Text>

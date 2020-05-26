@@ -51,6 +51,15 @@ const statsStyles = StyleSheet.create({
     textTransform: "uppercase",
     color: "#333",
   },
+  surfaceLong: {
+    marginTop: 10,
+    width: wp("92%"),
+    padding: 8,
+    height: 80,
+    justifyContent: "center",
+    elevation: 4,
+    borderRadius: 15,
+  },
 });
 
 export default statsStyles;
